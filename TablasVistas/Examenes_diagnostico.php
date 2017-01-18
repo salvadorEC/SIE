@@ -8,7 +8,7 @@ $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
 
 //############## E X A M E N E S - D I A G N O S T I C O ################################
 
-$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Id_ExamenD = Matricula_Alumno;";
+$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD;";
 $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 ?>
 
@@ -54,7 +54,7 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
                       <td class="text-center"><?php echo $renglon['Matricula_AlumnoD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                       <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                       <td class="text-center"><?php echo $renglon['Nivel_ExamenD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                      <td><a class="btn btn-primary" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
+                      <td><a class="btn btn-primary" role ="button" href="../FormsEditar/Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
                       <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
                     </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <?php }?>

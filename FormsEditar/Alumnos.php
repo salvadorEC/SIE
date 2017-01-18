@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<?php
+  // Incluir configuracion para conectar a la base de datos
+  include "../configuracion.php";
+
+  //Conectar a la base de datos
+  $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+
+    //Comprobar la conexion a la base de datos
+    if ($mysqli->connect_errno)
+    {
+      echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+      echo "conexion con exito";
+
+  // Conseguir la matricula al momento de hacer clic en Editar...
+  $mat = $_GET['Matricula_Alumno'];
+
+    //Realizar la consulta a la base de datos SIE
+    $Ver_Alumno = "SELECT * FROM ALUMNOS WHERE Matricula_Alumno = '".$mat."'";
+    $Result_ver_alumno = $mysqli->query($Ver_Alumno);
+
+  //Guardar el resiultado en un array
+  $row = $Result_ver_alumno->fetch_assoc();
+
+   ?>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,26 +32,28 @@
   </head>
   <body>
     <div class="page-header">
-      <h1>Registrar Alumno <small>Dar de alta alumnos en la base de datos</small></h1>
+      <h1>Editar Alumno <small>Editar este registro en la base de datos...</small></h1>
     </div>
     <section class="jumbotron">
-      <form class="form-horizontal" action="../BibliotecaPHP/Alta_Alumnos.php" method="post">
+      <form class="form-horizontal" action="../BibliotecaPHP/Update_Alumnos.php" method="post">
         <div class="form-group"> <!--Agrupar Label y El Input-->
+          <input type="hidden" name="Id_Alumno" value="<?php echo $row['Id_Alumno']?>"> <!-- INPUT INVISIBLE-->
           <label class="control-label col-sm-2">Matricula</label> <!--Label-->
           <div class="col-sm-8"> <!--Input-->
-            <input class="form-control" type="text" name="Matricula_Alumno" placeholder="Ej, 01134815" required="required">
+            <input class="form-control" type="text" name="Matricula_Alumno" value="<?php echo $row['Matricula_Alumno']?>">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2">Nombre Completo Del Alumno</label>
           <div class="col-sm-8">
-            <input class="form-control" type="text" name="Nombre_Alumno" placeholder="A_Paterno A_Materno Nombre (s)" required="required">
+            <input class="form-control" type="text" name="Nombre_Alumno" value="<?php echo $row['Nombre_Alumno']?>">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2">Carrera (Selecciona)</label>
           <div class="col-sm-8">
-            <select class="form-control" type="text" name="Carrera_Alumno" required="required">
+            <select class="form-control" type="text" name="Carrera_Alumno">
+              <option><?php echo $row['Carrera_Alumno'] ?></option> <!-- Muestra la carrera actual del alumno--> <!--version 1.0.1 no mostrar repetida la opcion -->
               <option>Licenciado en Contaduría</option>
               <option>Licenciado en Administración de Empresas</option>
               <option>Licenciado en Mercadotecnia</option>
@@ -39,7 +66,8 @@
         <div class="form-group">
           <label class="control-label col-sm-2">Semestre</label>
           <div class="col-sm-8">
-            <select class="form-control" type="number" name="Semestre_Alumno" required="required">
+            <select class="form-control" type="number" name="Semestre_Alumno" >
+              <option><?php echo $row['Semestre_Alumno']; ?> </option> <!-- Muestra el smestre actual del alumno--> <!--version 1.0.1 no mostrar repetida la opcion -->
               <option>1</option>
               <option>2</option>
               <option>3</option>

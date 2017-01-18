@@ -19,7 +19,6 @@
   $Carrera_Alumno = $_REQUEST['Carrera_Alumno'];
   $Semestre_Alumno = $_REQUEST['Semestre_Alumno'];
 
-
   // Guardar datos en la base de datos.
   $mysqli->query("INSERT INTO ALUMNOS (Id_Alumno,Matricula_Alumno,Nombre_Alumno,Carrera_Alumno,Semestre_Alumno)
                   VALUES (NULL,'".$Matricula_Alumno."','".$Nombre_Alumno."','".$Carrera_Alumno."','".$Semestre_Alumno."')");

@@ -18,9 +18,9 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-2">Matricula</label>
+          <label class="control-label col-sm-2">Matricula</label> <!-- Version 1.0.1 ... mostrar con AJAX el Nombre del alumno para verificar que es el y tambien para verificar que se encuentra en la base de datos-->
           <div class="col-sm-8">
-            <input class="form-control" type="number" name="Matricula_Alumno" placeholder="Ingresar Matricula Del Alumno">
+            <input class="form-control" type="number" name="Matricula_AlumnoD" placeholder="Ingresar Matricula Del Alumno">
           </div>
         </div>
         <div class="form-group">

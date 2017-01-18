@@ -16,7 +16,7 @@
      </nav>
 
      <header class="jumbotron">
-       
+
      </header>
 
 <!-- ############################# A L U M N O S #####################-->
@@ -34,7 +34,7 @@
            <a role="button" href="FormsAlta/Examenes_Diagnostico.php" class="btn btn-primary btn-lg btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Alta Examen</a>
          </div>
          <div class="col-sm-4">
-           <a role="button" href="TablasVistas/Alumnos_agrupados_por_carrera.php" class="btn btn-default btn-lg btn-block"><i class="fa fa-table" aria-hidden="true"></i> Registro De Los Examenes</a>
+           <a role="button" href="TablasVistas/Examenes_diagnostico.php" class="btn btn-default btn-lg btn-block"><i class="fa fa-table" aria-hidden="true"></i> Registro De Los Examenes</a>
          </div>
 
        </div>

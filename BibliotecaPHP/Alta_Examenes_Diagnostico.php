@@ -17,10 +17,10 @@
 
    //Recibir los datos
    $Fecha_ExamenD = $_REQUEST['Fecha_ExamenD'];
-   $Matricula_Alumno = $_REQUEST['Matricula_Alumno'];
+   $Matricula_AlumnoD = $_REQUEST['Matricula_AlumnoD'];
    $Nivel_ExamenD = $_REQUEST['Nivel_ExamenD'];
 
    //Guardar datos en la base de datos
-   $mysqli->query("INSERT INTO EXAMENES_DIAGNOSTICO (Id_ExamenD,Fecha_ExamenD,Matricula_Alumno,Nivel_ExamenD)
-                    VALUES (NULL,'".$Fecha_ExamenD."','".$Matricula_Alumno."','".$Nivel_ExamenD."')");
+   $mysqli->query("INSERT INTO EXAMENES_DIAGNOSTICO (Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nivel_ExamenD)
+                    VALUES (NULL,'".$Fecha_ExamenD."','".$Matricula_AlumnoD."','".$Nivel_ExamenD."')");
  ?>
