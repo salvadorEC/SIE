@@ -10,18 +10,20 @@
     {
       echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
-      echo "conexion con exito";
+      else
+        {
+          // Conseguir la matricula al momento de hacer clic en Editar...
+          $mat = $_GET['Matricula_Alumno'];
 
-  // Conseguir la matricula al momento de hacer clic en Editar...
-  $mat = $_GET['Matricula_Alumno'];
+            //Realizar la consulta a la base de datos SIE
+            $Ver_Alumno = "SELECT * FROM ALUMNOS WHERE Matricula_Alumno = '".$mat."'";
+            $Result_ver_alumno = $mysqli->query($Ver_Alumno);
 
-    //Realizar la consulta a la base de datos SIE
-    $Ver_Alumno = "SELECT * FROM ALUMNOS WHERE Matricula_Alumno = '".$mat."'";
-    $Result_ver_alumno = $mysqli->query($Ver_Alumno);
+          //Guardar el resiultado en un array
+          $row = $Result_ver_alumno->fetch_assoc();
 
-  //Guardar el resiultado en un array
-  $row = $Result_ver_alumno->fetch_assoc();
-
+          
+      }
    ?>
 
 <html>

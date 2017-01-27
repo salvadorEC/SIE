@@ -4,7 +4,7 @@
 include "../configuracion.php";
 
 //Conectar a la base de datos
-$mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+$mysqli = new mysqli($SERVIDOR, $USER, $PASS, $BD);
 
 //VER ALUMNOS DE CONTABILIDAD
 $verConta = "SELECT * FROM ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Contaduría'";
@@ -31,11 +31,9 @@ $verInfo = "SELECT * FROM ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Informá
 $resultInfo = $mysqli->query($verInfo);
 
   //Comprobar la conexion a la base de datos
-  if ($mysqli->connect_errno)
-  {
-    echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+  if ($mysqli->connect_errno) {
+      echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
   }
-    echo "conexion con exito";
 
  ?>
 <!DOCTYPE html>
@@ -44,12 +42,33 @@ $resultInfo = $mysqli->query($verInfo);
     <meta charset="utf-8">
     <title>Alumnos</title>
     <link rel="stylesheet" href="../css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+    <link rel="stylesheet" href="../css/font-awesome.css"> <!-- Mandar Llamar FontAwesome-->
   </head>
+              <!-- Version 1.0.1 ... Crear un menu con botones para mostrar cada carrera en tablas diferentes -->
   <body>  <!-- Cuerpo de la pagina-->
+
     <div class="container"> <!-- Centrar todas las tablas AJUSTAR-->
         <div class="page-header">  <!-- Encabezado Ajustado-->
           <h1>ALUMNOS<small> Agrupados por carrera</small></h1>
         </div>
+        <div class="row">
+          <!-- ##### BUSCADOR POR MATRICULA #####-->
+            <div class="col-sm-4">
+              <form class="form-inline" method="post" action="Busqueda_Alumnos.php">
+                <input class="form-control" type="text" placeholder="Matricula" name="Matricula_Alumno">
+                <button class="btn btn-outline-success " type="submit">Buscar</button>
+              </form>
+            </div>
+            <!-- ##### BOTON AGREGAR ALUMNO #####-->
+            <div class="col-sm-2">
+              <a role="button" href="../FormsAlta/Alumnos.php" class="btn btn-success btn-lg btn-block"> <i class="fa fa-user-plus fa-1x" aria-hidden="true"></i></a>
+            </div>
+            <!-- ##### BOTON MENU PRINCIPAL #####-->
+            <div class="col-sm-2">
+              <a role="button" href="../index.php" class="btn btn-primary btn-lg btn-block"> Menu Principal</a>
+            </div>
+        </div>
+        <br>
  <!-- ################ TABLAS ############################-->
     <div class="row"> <!-- Ajustar-->
     <table class="table table-hover"> <!-- Tabla con efecto al pasar el mouse sobre un registro-->
@@ -71,7 +90,8 @@ $resultInfo = $mysqli->query($verInfo);
       </thead>
       <tbody> <!-- Inicio Cuerpo de la Tabla de Contabilidad -->
         <!-- CODIGO PHP CON CODIGO HTML-->
-        <?php while ( $renglon = mysqli_fetch_array($resultConta)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+        <?php while ($renglon = mysqli_fetch_array($resultConta)) {
+     ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
         <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
         <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Id_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
@@ -79,10 +99,11 @@ $resultInfo = $mysqli->query($verInfo);
             <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-            <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-            <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+            <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
+            <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
           </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-          <?php }?>
+          <?php
+ }?>
       </tbody> <!-- Final Cuerpo de la Tabla de Contabilidad -->
       <thead> <!-- Inicio Cabecera para dividir la tabla de la otra tabla-->
         <tr>
@@ -107,7 +128,8 @@ $resultInfo = $mysqli->query($verInfo);
       </thead>
       <tbody> <!-- Inicio Cuerpo de la Tabla De Administracion-->
         <!-- CODIGO PHP CON CODIGO HTML-->
-        <?php while ( $renglon = mysqli_fetch_array($resultLae)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+        <?php while ($renglon = mysqli_fetch_array($resultLae)) {
+     ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
         <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
         <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Id_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
@@ -115,10 +137,11 @@ $resultInfo = $mysqli->query($verInfo);
             <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-            <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-            <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+            <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
+            <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
           </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-          <?php } // Final del ciclo?>
+          <?php
+ } // Final del ciclo?>
         </tbody> <!-- Final Cuerpo de la pagina De Administracion -->
         <thead> <!-- Inicio Cabecera para dividir la tabla de la otra tabla-->
           <tr>
@@ -143,7 +166,8 @@ $resultInfo = $mysqli->query($verInfo);
         </thead>
         <tbody> <!-- Inicio Cuerpo de la Tabla De Mercadotecnia-->
           <!-- CODIGO PHP CON CODIGO HTML-->
-          <?php while ( $renglon = mysqli_fetch_array($resultMerca)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+          <?php while ($renglon = mysqli_fetch_array($resultMerca)) {
+     ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
           <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
           <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <td class="text-center"><?php echo $renglon['Id_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
@@ -151,10 +175,11 @@ $resultInfo = $mysqli->query($verInfo);
               <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-              <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-              <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+              <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
+              <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
             </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-            <?php }?>
+            <?php
+ }?>
           </tbody> <!-- Final Cuerpo de la pagina De Mercadotecnia -->
           <thead> <!-- Inicio Cabecera para dividir la tabla de la otra tabla-->
             <tr>
@@ -179,7 +204,8 @@ $resultInfo = $mysqli->query($verInfo);
           </thead>
           <tbody> <!-- Inicio Cuerpo de la Tabla De Gestión Turística-->
             <!-- CODIGO PHP CON CODIGO HTML-->
-            <?php while ( $renglon = mysqli_fetch_array($resultTurismo)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+            <?php while ($renglon = mysqli_fetch_array($resultTurismo)) {
+     ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
             <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
             <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Id_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
@@ -187,10 +213,11 @@ $resultInfo = $mysqli->query($verInfo);
                 <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-                <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+                <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
+                <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
               </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-              <?php }?>
+              <?php
+ }?>
             </tbody> <!-- Final Cuerpo de la pagina De Gestión Turística -->
             <thead> <!-- Inicio Cabecera para dividir la tabla de la otra tabla-->
               <tr>
@@ -215,7 +242,8 @@ $resultInfo = $mysqli->query($verInfo);
             </thead>
             <tbody> <!-- Inicio Cuerpo de la Tabla De Negocios Internacionales-->
               <!-- CODIGO PHP CON CODIGO HTML-->
-              <?php while ( $renglon = mysqli_fetch_array($resultNegocios)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+              <?php while ($renglon = mysqli_fetch_array($resultNegocios)) {
+     ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
               <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
               <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                   <td class="text-center"><?php echo $renglon['Id_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
@@ -223,10 +251,11 @@ $resultInfo = $mysqli->query($verInfo);
                   <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                   <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                   <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                  <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-                  <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+                  <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
+                  <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
                 </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <?php }?>
+                <?php
+ }?>
               </tbody> <!-- Final Cuerpo de la pagina De Negocios Internacionales -->
               <thead> <!-- Inicio Cabecera para dividir la tabla de la otra tabla-->
                 <tr>
@@ -252,7 +281,8 @@ $resultInfo = $mysqli->query($verInfo);
               </thead>
               <tbody> <!-- Inicio Cuerpo de la Tabla De Informática-->
                 <!-- CODIGO PHP CON CODIGO HTML-->
-                <?php while ( $renglon = mysqli_fetch_array($resultInfo)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+                <?php while ($renglon = mysqli_fetch_array($resultInfo)) {
+     ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
                 <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
                 <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                     <td class="text-center"><?php echo $renglon['Id_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
@@ -260,10 +290,11 @@ $resultInfo = $mysqli->query($verInfo);
                     <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                     <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                     <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                    <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-                    <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+                    <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
+                    <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
                   </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                  <?php }?>
+                  <?php
+ }?>
                 </tbody> <!-- Final Cuerpo de la pagina De Informática -->
                 <thead> <!-- Inicio Cabecera para dividir la tabla de la otra tabla-->
                   <tr>

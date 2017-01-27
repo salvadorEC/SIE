@@ -4,5 +4,4 @@
   $USER = "root";
   $PASS = "root";
   $BD = "SIE";
-
 ?>

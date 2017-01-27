@@ -3,12 +3,11 @@
   include "../configuracion.php";
 
   //Conectar a la base de datos
-  $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+  $mysqli = new mysqli($SERVIDOR, $USER, $PASS, $BD);
 
     //Comprobar la conexion a la base de datos
-    if ($mysqli->connect_errno)
-    {
-      echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    if ($mysqli->connect_errno) {
+        echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
       echo "conexion con exito";
 
@@ -23,4 +22,3 @@
    //Guardar datos en la base de datos
    $mysqli->query("INSERT INTO EXAMENES_DIAGNOSTICO (Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nivel_ExamenD)
                     VALUES (NULL,'".$Fecha_ExamenD."','".$Matricula_AlumnoD."','".$Nivel_ExamenD."')");
- ?>
