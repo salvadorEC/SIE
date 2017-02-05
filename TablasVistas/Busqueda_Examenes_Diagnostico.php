@@ -1,7 +1,7 @@
 <?php
 
  ##########################################################
- #   BUSCAR EL REGISTRO DEL EXAMEN DIAGNOSTICO INGRESANDO #
+ #   BUSCAR EL REGISTRO DEL EXAMEN DIAGNOSTICO EN LA DB   #
  #  LA MATRICULA DEL ALUMNO COMO PARAMETRO...             #
  ##########################################################
 
@@ -28,8 +28,8 @@
    <head>
      <meta charset="utf-8">
      <title>EXAMENES DIAGNOSTICO</title>
-     <link rel="stylesheet" href="../css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
-     <link rel="stylesheet" href="../css/font-awesome.css"> <!-- Mandar Llamar FontAwesome-->
+     <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+     <link rel="stylesheet" href="../includes/css/font-awesome.css"> <!-- Mandar Llamar FontAwesome-->
    </head>
    <body>
    <header>
@@ -39,7 +39,7 @@
    </header>
    <section>
      <div class="jumbotron">
-
+       <h2>Resultado de la busqueda</h2>
      </div>
    </section>
 

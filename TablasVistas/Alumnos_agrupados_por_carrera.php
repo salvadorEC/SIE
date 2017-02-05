@@ -41,8 +41,8 @@ $resultInfo = $mysqli->query($verInfo);
   <head>
     <meta charset="utf-8">
     <title>Alumnos</title>
-    <link rel="stylesheet" href="../css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
-    <link rel="stylesheet" href="../css/font-awesome.css"> <!-- Mandar Llamar FontAwesome-->
+    <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+    <link rel="stylesheet" href="../includes/css/font-awesome.css"> <!-- Mandar Llamar FontAwesome-->
   </head>
               <!-- Version 1.0.1 ... Crear un menu con botones para mostrar cada carrera en tablas diferentes -->
   <body>  <!-- Cuerpo de la pagina-->

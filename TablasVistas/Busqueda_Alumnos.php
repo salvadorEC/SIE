@@ -21,7 +21,7 @@
   <head>
     <meta charset="utf-8">
     <title>RESULTADO BUSQUEDA ALUMNO</title>
-    <link rel="stylesheet" href="../css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+    <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
   </head>
   <body>
     <header class="jumbotron">

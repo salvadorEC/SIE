@@ -22,7 +22,7 @@
           //Guardar el resiultado en un array
           $row = $Result_ver_alumno->fetch_assoc();
 
-          
+
       }
    ?>
 
@@ -30,7 +30,7 @@
   <head>
     <meta charset="utf-8">
     <title>Registrar Alumno</title>
-    <link rel="stylesheet" href="../css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+    <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
   </head>
   <body>
     <div class="page-header">

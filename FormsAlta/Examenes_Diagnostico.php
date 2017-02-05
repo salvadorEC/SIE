@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Registrar Examen</title>
-    <link rel="stylesheet" href="../css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+    <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
   </head>
   <body>
     <div class="page-header">

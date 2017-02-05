@@ -17,8 +17,8 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
   <head>
     <meta charset="utf-8">
     <title>EXAMENES DIAGNOSTICO</title>
-    <link rel="stylesheet" href="../css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
-    <link rel="stylesheet" href="../css/font-awesome.css"> <!-- Mandar Llamar FontAwesome-->
+    <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+    <link rel="stylesheet" href="../includes/css/font-awesome.css"> <!-- Mandar Llamar FontAwesome-->
   </head>
   <body>
   <header>
@@ -32,16 +32,28 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
     </div>
   </section>
 
-    <div class="row">
-    <div class="container">
-      <!-- ##### BUSCADOR POR MATRICULA #####-->
-        <div class="col-sm-4">
-          <form class="form-inline" method="post" action="Busqueda_Examenes_Diagnostico.php">
-            <input class="form-control" type="text" placeholder="Matricula" name="Matricula_Alumno">
-            <button class="btn btn-outline-success " type="submit">Buscar</button>
-          </form>
-        </div>
-    </div>
+    <div class="row"> <!-- ####### BOTONES PRINCIPALES Y BUSCADOR ##### -->
+      <div class="container">
+        <!-- ##### BUSCADOR POR MATRICULA #####-->
+          <div class="col-sm-4">
+            <form class="form-inline" method="post" action="Busqueda_Examenes_Diagnostico.php">
+              <input class="form-control" type="text" placeholder="Matricula" name="Matricula_Alumno">
+              <button class="btn btn-outline-success " type="submit">Buscar</button>
+            </form>
+          </div>
+          <!-- ##### BOTON DE AGREGAR EXAMEN DIAGNOSTICO #####-->
+          <div class="col-sm-2">
+            <a role="button" href="../FormsAlta/Examenes_Diagnostico.php" class="btn btn-primary btn-lg btn-block"> <i class="fa fa-plus-square fa-1px" aria-hidden="true"></i> Agregar</a>
+          </div>
+          <!-- ##### BOTON MENU PRINCIPAL #####-->
+          <div class="col-sm-2">
+            <a role="button" href="../index.php" class="btn btn-primary btn-lg btn-block"> Menu Principal</a>
+          </div>
+          <!-- ##### BOTON GERERAR REPORTES #####-->
+          <div class="col-sm-4">
+            <a role="button" href="../TablasVistas/Menu_Reportes_Examenes_Diagnostico.php" class="btn btn-danger btn-lg btn-block"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Generar Reportes</a>
+          </div>
+      </div>
     </div>
 
     <div class="container">

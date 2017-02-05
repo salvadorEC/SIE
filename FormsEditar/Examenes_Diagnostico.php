@@ -10,7 +10,6 @@
     {
       echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
-      echo "conexion con exito";
 
   // Conseguir la matricula al momento de hacer clic en Editar...
   $Id_ExamenD = $_GET['Id_ExamenD'];
@@ -29,7 +28,7 @@
   <head>
     <meta charset="utf-8">
     <title>Registrar Examen</title>
-    <link rel="stylesheet" href="../css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+    <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
   </head>
 
   <body>
