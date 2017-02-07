@@ -1,10 +1,9 @@
 <?php
 
-###########################################################
-# Aqui se podra dar de alta a alumnos desde TablasVistas  #
-# y depues se redirigira a TablasVistas de Nuevo.         #
-###########################################################
-
+##################################################################################################################
+# Cuando se quiera dar de alta un examen diagnostico .. y el alumno no este registrado en la base de datos ...   #
+# se enviara aqui para dar de alta al alumno y despues se dirigira al formulario de alta examen diagnostico..  #
+##################################################################################################################
   // Incluir configuracion para conectar a la base de datos
   include "../configuracion.php";
 
@@ -38,6 +37,6 @@
   //Guardar el resultado en un array
   $row = $Result_Ver_Alumno->fetch_assoc();
 
-  header('Location:../TablasVistas/Alumnos_agrupados_por_carrera.php');
+  header('Location:../FormsAlta/Examenes_Diagnostico.php?Matricula_Alumno='.$row['Matricula_Alumno'].'');
 
 ?>

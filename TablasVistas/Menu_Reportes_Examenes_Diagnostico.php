@@ -29,7 +29,7 @@
          <form class="form-inline" method="post" action="../TablasVistas/Preparar_Solicitud_A_Facultad_De_Idiomas_Examen_Diagnostico.php">
            <label class="control-label col-sm-3"> Generar Solicitud a Facultad de Idiomas </label> <!--Label-->
              <div class="col-sm-8"> <!--Input-->
-               <input class="form-control" type="text" name="Fecha_ExamenD" placeholder="Fecha y Hora" required="required">
+               <input class="form-control" type="datetime-local" name="Fecha_ExamenD" placeholder="Fecha y Hora" required="required">
                <button class="btn btn-outline-success " type="submit">Buscar</button>
              </div>
          </form>

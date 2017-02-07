@@ -5,60 +5,43 @@
   //Conectar a la base de datos
   $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
 
-    //Comprobar la conexion a la base de datos
-    if ($mysqli->connect_errno)
-    {
-      echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
+  //Recibir la matricula que se envia desde BibliotecaPHP/Comprobar_Alta_Examen_Diagnostico.php
+  $Matricula_De_Comprobacion = $_GET['Matricula_AlumnoD'];
+  //Enviar la matricula al formulario para no volver a escribirla de nuevo
+  $Ver_Examenes_Diagnostico = "SELECT * FROM EXAMENES_DIAGNOSTICO WHERE Matricula_AlumnoD = '".$Matricula_De_Comprobacion."' ";
+  $Result_Ver_ExamenD = $mysqli->query($Ver_Examenes_Diagnostico);
+  //Meter el registro en un array
+  $row = $Result_Ver_ExamenD->fetch_assoc();
 
-  // Conseguir la matricula al momento de hacer clic en Editar...
-  $Id_ExamenD = $_GET['Id_ExamenD'];
-
-    //Realizar la consulta a la base de datos SIE
-    $Ver_ExamenD = "SELECT * FROM EXAMENES_DIAGNOSTICO WHERE Id_ExamenD = '".$Id_ExamenD."'";
-    $Result_ver_examen_d = $mysqli->query($Ver_ExamenD);
-
-  //Guardar el resiultado en un array
-  $row = $Result_ver_examen_d->fetch_assoc();
-
-?>
-
+ ?>
 <html>
-
   <head>
     <meta charset="utf-8">
     <title>Registrar Examen</title>
     <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
   </head>
-
   <body>
     <div class="page-header">
-      <h1>Editar Exmanen Diagnostico <small>Editar este registro en la base de datos... </small></h1>
+      <h1>Alta Examen Diagnostico <small>Dar de alta examenes diagnostico en la base de datos</small></h1>
     </div>
     <section class="jumbotron">
-
-      <!-- ####### F O R M U L A R I O - E X A M E N E S ########## -->
-      <form class="form-horizontal" action="../BibliotecaPHP/Update_Examenes_Diagnostico.php" method="post">
-
+      <form class="form-horizontal" action="../BibliotecaPHP/Alta_Examenes_Diagnostico_Pago.php" method="post">
         <div class="form-group">
-          <input type="hidden" name="Id_ExamenD" value="<?php echo $row['Id_ExamenD']?>"> <!-- INPUT OCULTO-->
-
           <label class="control-label col-sm-2">Fecha y Hora</label>
           <div class="col-sm-8">
-            <input class="form-control" type="datetime-local" name="Fecha_ExamenD" value="<?php echo $row['Fecha_ExamenD']?> ">
+            <input class="form-control"type="datetime-local" name="Fecha_ExamenD">
           </div>
         </div>
-
         <div class="form-group">
-          <label class="control-label col-sm-offset-2 col-sm-2"> Matricula: <?php echo $row['Matricula_AlumnoD']?></label> <!-- Version 1.0.1 ... Con AJAX mostrar el nomnbre y matricula del alumno-->
-          <input type="hidden" name="Matricula_AlumnoD" value="<?php echo $row['Matricula_AlumnoD']?>">
+          <label class="control-label col-sm-2">Matricula</label> <!-- Version 1.0.1 ... mostrar con AJAX el Nombre del alumno para verificar que es el y tambien para verificar que se encuentra en la base de datos-->
+          <div class="col-sm-8">
+            <input class="form-control" type="number" name="Matricula_AlumnoD" value ="<?php echo $row['Matricula_AlumnoD'] ?>">
+          </div>
         </div>
-
         <div class="form-group">
           <label class="control-label col-sm-2">Nivel</label>
           <div class="col-sm-8">
             <select class="form-control" name="Nivel_ExamenD">
-              <option><?php echo $row['Nivel_ExamenD']?></option> <!-- Version 1.0.1 Evitar que se repita la opcion-->
               <option>Solicitud</option>
               <option>Nivel 1</option>
               <option>Nivel 2</option>
@@ -69,6 +52,12 @@
               <option>Nivel 7</option>
             </select>
             <p>Solicitud: Cuando el alumno solicita hacer el examen, el nivel se registra cuando ya llegan los resultados del examen</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2">No. Recibo</label>
+          <div class="col-sm-8">
+            <input class="form-control" type="number" name="No_Recibo_ED" placeholder="No. Recibo">
           </div>
         </div>
         <div class="form-group">

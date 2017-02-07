@@ -2,7 +2,7 @@
 
  ##########################################################
  #   BUSCAR EL REGISTRO DEL EXAMEN DIAGNOSTICO EN LA DB   #
- #  LA MATRICULA DEL ALUMNO COMO PARAMETRO...             #
+ #  LA FECHA Y HORA DEL EXAMEN COMO PARAMETRO...             #
  ##########################################################
 
   // Incluir configuracion para conectar a la base de datos
@@ -17,9 +17,9 @@
   }
 
   // Recibir el valor de la matricula del alumno TablasVistas/Examenes_diagnostico.php...
-  $Matricula_Alumno = $_REQUEST['Matricula_Alumno'];
+  $Fecha_ExamenD = $_REQUEST['Fecha_ExamenD'];
 
-  $ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Matricula_Alumno = '".$Matricula_Alumno."';";
+  $ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
   $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 
  ?>
@@ -42,18 +42,6 @@
        <h2>Resultado de la busqueda</h2>
      </div>
    </section>
-
-     <div class="row">
-     <div class="container">
-       <!-- ##### BUSCADOR POR MATRICULA #####-->
-         <div class="col-sm-4">
-           <form class="form-inline" method="post" action="Busqueda_Examenes_Diagnostico.php">
-             <input class="form-control" type="text" placeholder="Matricula" name="Matricula_Alumno">
-             <button class="btn btn-outline-success " type="submit">Buscar</button>
-           </form>
-         </div>
-     </div>
-     </div>
 
      <div class="container">
        <div class="row">

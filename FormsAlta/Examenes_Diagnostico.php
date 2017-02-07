@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+<?php
+  // Incluir configuracion para conectar a la base de datos
+  include "../configuracion.php";
+
+  //Conectar a la base de datos
+  $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+
+  //Recibir la matricula que se envia desde BibliotecaPHP/Comprobar_Alta_Examen_Diagnostico.php
+  $Matricula_De_Comprobacion = $_GET['Matricula_Alumno'];
+  //Enviar la matricula al formulario para no volver a escribirla de nuevo
+  $Ver_Alumnos = "SELECT * FROM ALUMNOS WHERE Matricula_Alumno = '".$Matricula_De_Comprobacion."'";
+  $Result_Ver_Alumno = $mysqli->query($Ver_Alumnos);
+
+  //Guardar el resultado en un array
+  $row = $Result_Ver_Alumno->fetch_assoc();
+
+ ?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -20,7 +36,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2">Matricula</label> <!-- Version 1.0.1 ... mostrar con AJAX el Nombre del alumno para verificar que es el y tambien para verificar que se encuentra en la base de datos-->
           <div class="col-sm-8">
-            <input class="form-control" type="number" name="Matricula_AlumnoD" placeholder="Ingresar Matricula Del Alumno">
+            <input class="form-control" type="number" name="Matricula_AlumnoD" value ="<?php echo $row['Matricula_Alumno'] ?>"> <!-- Recibir el valor de la matricula de la base de datos de ALUMNOS -->
           </div>
         </div>
         <div class="form-group">
@@ -28,12 +44,13 @@
           <div class="col-sm-8">
             <select class="form-control" name="Nivel_ExamenD">
               <option>Solicitud</option>
-              <option>Primer</option>
-              <option>Segundo</option>
-              <option>Tercer</option>
-              <option>Cuarto</option>
-              <option>Quinto</option>
-              <option>Sexto</option>
+              <option>Nivel 1</option>
+              <option>Nivel 2</option>
+              <option>Nivel 3</option>
+              <option>Nivel 4</option>
+              <option>Nivel 5</option>
+              <option>Nivel 6</option>
+              <option>Nivel 7</option>
             </select>
             <p>Solicitud: Cuando el alumno solicita hacer el examen, el nivel se registra cuando ya llegan los resultados del examen</p>
           </div>

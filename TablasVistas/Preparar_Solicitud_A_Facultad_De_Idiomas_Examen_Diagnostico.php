@@ -20,7 +20,7 @@ if ($mysqli->connect_errno) {
 // Recibir la fecha y hora del examen Diagnostico ...
 $Fecha_ExamenD = $_REQUEST['Fecha_ExamenD'];
 //Realizar la busqueda en la base de datos... parametro: Fecha y Hora del Examen Diagnostico.
-$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
+$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
 $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 
 ?>
@@ -54,6 +54,7 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
              <th class="text-center">Matricula</th>
              <th class="text-center">Alumno</th>
              <th class="text-center">Nivel</th>
+             <th class="text-center">No. Recibo</th>
              <th class="text-center"></th>
              <th class="text-center"></th>
            </tr>
@@ -67,9 +68,8 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
                      <td class="text-center"><?php echo $renglon['Fecha_ExamenD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                      <td class="text-center"><?php echo $renglon['Matricula_AlumnoD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                      <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                     <td class="text-center"><?php echo $renglon['Nivel_ExamenD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                     <td><a class="btn btn-primary" role ="button" href="../FormsEditar/Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-                     <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo--> <!-- Version 1.0.1 Preguntar si se desea Eliminar el registro .. antes de realizar el Query-->
+                     <td class="text-center"><?php echo $renglon['Nivel_ExamenD']?></td>
+                     <td class="text-center"><?php echo $renglon['No_Recibo_ED']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                    </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
              <?php }?>
          </tbody>

@@ -17,7 +17,7 @@ $mysqli = new mysqli($SERVIDOR, $USER, $PASS, $BD);
   $Idioma_Reporte = $_REQUEST['Idioma_Reporte'];
 
   //Realizar la busqueda en la base de datos... parametro: Fecha y Hora del Examen Diagnostico.
-  $ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,Carrera_Alumno, Semestre_Alumno FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
+  $ver_Examenes_D = "SELECT Matricula_AlumnoD,Nombre_Alumno,Semestre_Alumno,No_Recibo_ED,Carrera_Alumno FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
   $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 
 
@@ -82,7 +82,7 @@ function Footer()
 // Creación del objeto de la clase heredada
 $pdf = new PDF();
 $pdf->AliasNbPages();
-$pdf->AddPage('A4');
+$pdf->AddPage();
 
 //Color de relleno
 $pdf->SetFillColor(143,188,143);
@@ -176,7 +176,7 @@ while ($renglon = mysqli_fetch_array($Result_Ver_Examenes_D))
   $pdf->SetX(164);
   $pdf->Cell(10,5,utf8_decode($renglon['Semestre_Alumno']),1,0,'C');
   $pdf->SetX(175);
-  $pdf->Cell(25,5,utf8_decode('No.Recibo'),1,0,'C');
+  $pdf->Cell(25,5,utf8_decode($renglon['No_Recibo_ED']),1,0,'C');
 
   }
 

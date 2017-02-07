@@ -1,5 +1,14 @@
-<!DOCTYPE html>
-</html>
+<?php
+  // Incluir configuracion para conectar a la base de datos
+  include "../configuracion.php";
+
+  //Conectar a la base de datos
+  $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+
+  //Recibir la matricula que se envia desde BibliotecaPHP/Comprobar_Alta_Examen_Diagnostico.php
+  $Matricula_De_Comprobacion = $_GET['Matricula_Alumno'];
+
+ ?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -11,7 +20,7 @@
       <h1>Registrar Alumno <small>Dar de alta alumnos en la base de datos</small></h1>
     </div>
     <section class="jumbotron">
-      <form class="form-horizontal" action="../BibliotecaPHP/Alta_Alumnos.php" method="post">
+      <form class="form-horizontal" action="../BibliotecaPHP/Alta_Alumnos_De_Examen_Diagnostico.php" method="post">
         <div class="form-group"> <!--Agrupar Label y El Input-->
           <label class="control-label col-sm-2">Matricula</label> <!--Label-->
           <div class="col-sm-8"> <!--Input-->

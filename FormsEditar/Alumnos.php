@@ -56,6 +56,7 @@
           <div class="col-sm-8">
             <select class="form-control" type="text" name="Carrera_Alumno">
               <option><?php echo $row['Carrera_Alumno'] ?></option> <!-- Muestra la carrera actual del alumno--> <!--version 1.0.1 no mostrar repetida la opcion -->
+              <option>Tronco Común</option>
               <option>Licenciado en Contaduría</option>
               <option>Licenciado en Administración de Empresas</option>
               <option>Licenciado en Mercadotecnia</option>
