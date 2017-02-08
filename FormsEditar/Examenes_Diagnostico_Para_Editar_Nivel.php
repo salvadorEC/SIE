@@ -37,20 +37,20 @@
     </div>
     <section class="jumbotron">
 
-      <!-- ####### F O R M U L A R I O - E X A M E N E S ########## -->
-      <form class="form-horizontal" action="../BibliotecaPHP/Update_Examenes_Diagnostico.php" method="post">
-
+      <!-- ####### F O R M U L A R I O - E X A M E N E S - EDITAR ########## -->
+      <form class="form-horizontal" action="../BibliotecaPHP/Update_Examenes_Diagnostico_Editar_Nivel.php" method="post">
+      <!-- ###### ID Examen OCULTO #####-->
         <div class="form-group">
           <input type="hidden" name="Id_ExamenD" value="<?php echo $row['Id_ExamenD']?>"> <!-- INPUT OCULTO-->
-
-          <label class="control-label col-sm-2">Fecha y Hora</label>
-          <div class="col-sm-8">
-            <input class="form-control" type="text" name="Fecha_ExamenD" value="<?php echo $row['Fecha_ExamenD']?> ">
-          </div>
         </div>
-
+          <!-- ###### FECHA Y HORA - APARECE SIN PODER EDITAR #####-->
         <div class="form-group">
-          <label class="control-label col-sm-offset-2 col-sm-2"> Matricula: <?php echo $row['Matricula_AlumnoD']?></label> <!-- Version 1.0.1 ... Con AJAX mostrar el nomnbre y matricula del alumno-->
+          <label class="control-label col-sm-4">Fecha y Hora: <?php echo $row['Fecha_ExamenD']?></label>
+          <input type="hidden" name="Fecha_ExamenD" value="<?php echo $row['Fecha_ExamenD']?>">
+        </div>
+        <!-- ###### MATRICULA - APARECE SIN PODER EDITAR #####-->
+        <div class="form-group">
+          <label class="control-label col-sm-4"> Matricula: <?php echo $row['Matricula_AlumnoD']?></label> <!-- Version 1.0.1 ... Con AJAX mostrar el nomnbre y matricula del alumno-->
           <input type="hidden" name="Matricula_AlumnoD" value="<?php echo $row['Matricula_AlumnoD']?>">
         </div>
 

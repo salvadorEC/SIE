@@ -35,8 +35,9 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
   <!-- ##### BUSCADOR POR FECHA y HORA #####-->
   <div class="container">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-offset-6 col-sm-7">
         <form class="form-inline" method="post" action="../TablasVistas/Busqueda_Examenes_Diagnostico_Para_Editar.php">
+          <label class="control-label col-sm-4">Agregar Resultados Del Examen Diagnostico -></label>
           <input class="form-control" type="datetime-local"  name="Fecha_ExamenD">
           <button class="btn btn-outline-success " type="submit">Buscar</button>
         </form>

@@ -42,19 +42,7 @@
        <h2>Resultado de la busqueda</h2>
      </div>
    </section>
-
-     <div class="row">
-     <div class="container">
-       <!-- ##### BUSCADOR POR MATRICULA #####-->
-         <div class="col-sm-4">
-           <form class="form-inline" method="post" action="Busqueda_Examenes_Diagnostico.php">
-             <input class="form-control" type="text" placeholder="Matricula" name="Matricula_Alumno">
-             <button class="btn btn-outline-success " type="submit">Buscar</button>
-           </form>
-         </div>
-     </div>
-     </div>
-
+   
      <div class="container">
        <div class="row">
          <table class="table table-hover">

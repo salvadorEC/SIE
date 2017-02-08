@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.6.5.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 08-01-2017 a las 07:12:07
--- Versión del servidor: 5.6.33
--- Versión de PHP: 5.5.38
+-- Tiempo de generación: 08-02-2017 a las 02:13:38
+-- Versión del servidor: 5.6.34
+-- Versión de PHP: 7.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,7 +39,7 @@ CREATE TABLE `ALUMNOS` (
 --
 
 INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrera_Alumno`, `Semestre_Alumno`) VALUES
-(44, '00015388', 'Lugo Morales Ana Rocio', 'Licenciado en Contaduría', '1'),
+(44, '00015388', 'Lugo Morales Ana Rocio', 'Licenciado en Contaduría', '3'),
 (550, '00107618', ' APOLINAR LOPEZ DARIO', 'Licenciado en Negocios Internacionales', '2'),
 (549, '00108148', 'Perez Perez Esther Yuliana ', 'Licenciado en Negocios Internacionales', '2'),
 (551, '00108530', 'VILLEGAS ROCHA GUSTAVO', 'Licenciado en Negocios Internacionales', '2'),
@@ -1482,6 +1482,14 @@ INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrer
 (1113, '01134691', 'ENRIQUEZ RIVERA CARMEN GUADALUPE', 'Licenciado en Contaduría', '2'),
 (1123, '01134735', 'ROUSE MADRIGAL MARIANA ', 'Licenciado en Gestión Turística', '2'),
 (1417, '01134762', 'CISNEROS MARRON ALBA MARINA', 'Licenciado en Negocios Internacionales', '1'),
+(1480, '01134815', 'Echavarria Contreras Salvador', 'Licenciado en Informática', '6'),
+(1483, '01134816', 'Diaz Ramirez Fernando', 'Licenciado en Informática', '6'),
+(1484, '01134817', 'Perez Fuentes Asael', 'Licenciado en Informática', '5'),
+(1485, '01134818', 'Sanchez Lopez Martha', 'Licenciado en Contaduría', '1'),
+(1486, '01134819', 'Echavarria Contreras Fernando', 'Licenciado en Contaduría', '1'),
+(1487, '01134820', 'Echavarria Contreras Julieta', 'Licenciado en Contaduría', '1'),
+(1490, '01134821', 'Contreras Pineda Julio ', 'Licenciado en Contaduría', '1'),
+(1493, '01134822', 'Loco Perron Chino Paco', 'Licenciado en Contaduría', '1'),
 (1457, '01134839', 'REAL CABELLO ESTHER', 'Licenciado en Mercadotecnia', '1'),
 (1342, '01134919', 'ZAMACONA ZARAGOZA NAHUM', 'Licenciado en Contaduría', '1'),
 (1310, '01135013', 'MARTINEZ BARAJAS OSCAR', 'Licenciado en Gestión Turística', '1'),
@@ -1527,10 +1535,33 @@ INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrer
 
 CREATE TABLE `EXAMENES_DIAGNOSTICO` (
   `Id_ExamenD` int(11) NOT NULL,
-  `Fecha_ExamenD` datetime NOT NULL,
-  `Matricula_Alumno` varchar(10) NOT NULL,
-  `Nivel_ExamenD` varchar(10) NOT NULL
+  `Fecha_ExamenD` varchar(20) NOT NULL,
+  `Matricula_AlumnoD` varchar(10) NOT NULL,
+  `Nivel_ExamenD` varchar(10) NOT NULL,
+  `No_Recibo_ED` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `EXAMENES_DIAGNOSTICO`
+--
+
+INSERT INTO `EXAMENES_DIAGNOSTICO` (`Id_ExamenD`, `Fecha_ExamenD`, `Matricula_AlumnoD`, `Nivel_ExamenD`, `No_Recibo_ED`) VALUES
+(15, '2017-02-05T19:00  ', '00141114', 'Nivel 1', ''),
+(16, '2017-02-05T19:00', '00141114', 'Nivel 2', ''),
+(17, '2017-02-05T19:00', '00141114', 'Solicitud', ''),
+(18, '2017-02-05T19:00', '00141114', 'Nivel 1', ''),
+(19, '2017-02-05T19:00', '00141114', 'Nivel 4', ''),
+(20, '2017-02-05T19:00', '00141114', 'Nivel 2', ''),
+(21, '2017-02-05T19:00', '00141114', 'Nivel 5', ''),
+(22, '2017-02-05T19:00', '00141114', 'Nivel 3', ''),
+(24, '2017-02-05T19:00', '00141114', 'Nivel 1', ''),
+(25, '2017-02-05T19:00', '00141114', 'Nivel 1', ''),
+(26, '2017-02-05T19:00', '00141114', 'Nivel 7', ''),
+(27, '2017-02-05T19:00 ', '00141114', 'Nivel 7', ''),
+(28, '2017-02-05T19:00 ', '00141114', 'Nivel 7', ''),
+(29, '2017-02-05T19:00 ', '00141114', 'Nivel 7', ''),
+(30, '2017-02-05T19:00 ', '00141114', 'Nivel 6', ''),
+(40, '2017-02-06T20:00  ', '01134822', 'Nivel 7', '');
 
 --
 -- Índices para tablas volcadas
@@ -1548,8 +1579,8 @@ ALTER TABLE `ALUMNOS`
 --
 ALTER TABLE `EXAMENES_DIAGNOSTICO`
   ADD PRIMARY KEY (`Id_ExamenD`),
-  ADD KEY `Matricula_Alumno` (`Matricula_Alumno`),
-  ADD KEY `Matricula_Alumno_2` (`Matricula_Alumno`);
+  ADD KEY `Matricula_Alumno` (`Matricula_AlumnoD`),
+  ADD KEY `Matricula_Alumno_2` (`Matricula_AlumnoD`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -1559,12 +1590,12 @@ ALTER TABLE `EXAMENES_DIAGNOSTICO`
 -- AUTO_INCREMENT de la tabla `ALUMNOS`
 --
 ALTER TABLE `ALUMNOS`
-  MODIFY `Id_Alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1478;
+  MODIFY `Id_Alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1494;
 --
 -- AUTO_INCREMENT de la tabla `EXAMENES_DIAGNOSTICO`
 --
 ALTER TABLE `EXAMENES_DIAGNOSTICO`
-  MODIFY `Id_ExamenD` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_ExamenD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- Restricciones para tablas volcadas
 --
@@ -1573,7 +1604,7 @@ ALTER TABLE `EXAMENES_DIAGNOSTICO`
 -- Filtros para la tabla `EXAMENES_DIAGNOSTICO`
 --
 ALTER TABLE `EXAMENES_DIAGNOSTICO`
-  ADD CONSTRAINT `examenes_diagnostico_ibfk_1` FOREIGN KEY (`Matricula_Alumno`) REFERENCES `ALUMNOS` (`Matricula_Alumno`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `examenes_diagnostico_ibfk_1` FOREIGN KEY (`Matricula_AlumnoD`) REFERENCES `ALUMNOS` (`Matricula_Alumno`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
