@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 08-02-2017 a las 02:13:38
+-- Tiempo de generación: 08-02-2017 a las 02:37:28
 -- Versión del servidor: 5.6.34
 -- Versión de PHP: 7.1.0
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `SIE`
 --
+CREATE DATABASE IF NOT EXISTS `SIE` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `SIE`;
 
 -- --------------------------------------------------------
 
