@@ -81,13 +81,6 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
        <div class="form-group"> <!--Agrupar Label y El Input-->
          <input type="hidden" name="Fecha_ExamenD" value="<?php echo $Fecha_ExamenD ?>"> <!-- INPUT INVISIBLE que manda como parametro la fecha y hora del examen Diagnostico-->
        </div>
-       <div class="col-sm-offset-2 col-sm-8">
-         <select class="form-control" type="text" name="Idioma_Reporte" required="required"> <!-- SELECCIONAR IDIOMA PARA IMRPIMIR EL REPORTE-->
-           <option>Seleccionar Idioma</option>
-           <option>Inglés </option>
-           <option>Alemán</option>
-         </select>
-       </div>
        <div class="col-sm-offset-2 col-sm-8"> <!-- Recorrer el boton dos columnas hacia la derecha y ancharlo 6 columnas-->
          <button type="submit" class="btn btn-success btn-block">Imprimir Solicitud</button>
        </div>

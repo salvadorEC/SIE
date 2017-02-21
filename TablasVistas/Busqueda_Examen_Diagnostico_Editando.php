@@ -4,7 +4,7 @@
  #   BUSCAR EL REGISTRO DEL EXAMEN DIAGNOSTICO EN LA DB                                                              #
  #  LA FECHA Y HORA DEL EXAMEN COMO PARAMETRO                                                                        #
  # AQUI YA ESTAN EDITANDO LOS REGISTROS CADA VEZ QUE SE EDITA UN REGISTRO                                             #
- # CADE VEZ QUE SE LE AGREGA EL NIVEL. SE HACE UNA CONSULTA PARA MOSTRAR                                              #
+ # CADA VEZ QUE SE LE AGREGA EL NIVEL. SE HACE UNA CONSULTA PARA MOSTRAR                                              #
  # LOS REGISTROS QUE YA SE EDITARON.  Y ASI NO PERDER EL CONTROL SOBRE LO QUE SE ESTA EDITANDO (NIVEL)...             #
  #####################################################################################################################
 

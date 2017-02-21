@@ -1,6 +1,6 @@
 <?php
 
- ?>
+?>
 
  <!DOCTYPE html>
  <html>
@@ -31,7 +31,14 @@
            <div class="col-sm-4">
              <a role="button" href="TablasVistas/Examenes_diagnostico.php" class="btn btn-primary btn-lg btn-block"> <i class="fa fa-pencil-square-o fa-4x" aria-hidden="true"></i> Examenes Diagnostico </a>
            </div>
-         </div>
+          </div>
+      <br>
+      <div class="row">
+        <!-- ############################# ACREDITACIONES #####################-->
+        <div class="col-sm-offset-2 col-sm-8">
+          <a role="button" href="" class="btn btn-danger btn-lg btn-block"> <i class="fa fa-bookmark-o fa-4x" aria-hidden="true"></i> Acreditaciones </a>
+        </div>
+      </div>
      </section>
 <br>
 

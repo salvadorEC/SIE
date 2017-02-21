@@ -12,12 +12,12 @@
 
   // Version 1.0.1 .. ver si el alumno ya hizo el examen diagnostico y arrojar el mensaje de que ya hizo el examen que esta vez tendra un costo..
   //Version 1.0.1 si el alumno no esta registrado enviar a formulario para registrarlo..
-
+  
    //Recibir los datos
    $Fecha_ExamenD = $_REQUEST['Fecha_ExamenD'];
    $Matricula_AlumnoD = $_REQUEST['Matricula_AlumnoD'];
    $Nivel_ExamenD = $_REQUEST['Nivel_ExamenD'];
-   
+
 
    //Guardar datos en la base de datos
    $mysqli->query("INSERT INTO EXAMENES_DIAGNOSTICO (Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nivel_ExamenD)

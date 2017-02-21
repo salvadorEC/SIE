@@ -30,7 +30,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2">Fecha y Hora</label>
           <div class="col-sm-8">
-            <input class="form-control"type="datetime-local" name="Fecha_ExamenD">
+            <input class="form-control" type="datetime-local" name="Fecha_ExamenD">
           </div>
         </div>
         <div class="form-group">

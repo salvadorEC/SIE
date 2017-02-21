@@ -14,7 +14,30 @@ $mysqli = new mysqli($SERVIDOR, $USER, $PASS, $BD);
 
   // Recibir la fecha y hora del examen Diagnostico ...
   $Fecha_ExamenD = $_REQUEST['Fecha_ExamenD'];
-  $Idioma_Reporte = $_REQUEST['Idioma_Reporte'];
+
+  // ################# MOSTRAR FECHA DD/MM/YY Y HORA ##########
+
+  function multiexplode ($delimiters,$string) {
+
+      $ready = str_replace($delimiters, $delimiters[0], $string);
+      $launch = explode($delimiters[0], $ready);
+      return  $launch;
+  }
+
+  $Fecha = $Fecha_ExamenD;
+  $exploded = multiexplode(array("-","T"),$Fecha);
+
+  //print_r($exploded);
+
+/*  echo "Fecha: ";
+  echo $exploded [2]; // Dia
+  echo "/";
+  echo $exploded [1]; // Mes
+  echo "/";
+  echo $exploded [0]; // Ano
+  echo " ";
+  echo "Hora: ";
+  echo $exploded [3]; // Hora */
 
   //Realizar la busqueda en la base de datos... parametro: Fecha y Hora del Examen Diagnostico.
   $ver_Examenes_D = "SELECT Matricula_AlumnoD,Nombre_Alumno,Semestre_Alumno,No_Recibo_ED,Carrera_Alumno FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
@@ -90,13 +113,24 @@ $pdf->SetFont('Arial','',12);
 // Movernos a la derecha
 $pdf->SetX(10);
 
-// ###### HEADER #######
-$pdf->Cell(190,10,utf8_decode('Lista para examen de ubicación: '.$Idioma_Reporte),0,0,'C',1);
+// ###### SUB-HEADER #######
+$pdf->Cell(190,10,utf8_decode('Lista para examen de ubicación: Inglés '),0,0,'C',1);
 $pdf->Ln(8);
-$pdf->Cell(190,10,utf8_decode('Fecha y Hora: '.$Fecha_ExamenD),0,0,'C',1);
+$pdf->Cell(190,10,utf8_decode('Fecha: '.$exploded [2].'/'.$exploded [1].'/'.$exploded [0]),0,0,'C',1);
+$pdf->Ln(8);
+$pdf->Cell(190,10,utf8_decode('Hora: '.$exploded [3]),0,0,'C',1);
 // Salto de línea
 $pdf->Ln(13);
 
+/*  echo "Fecha: ";
+  echo $exploded [2]; // Dia
+  echo "/";
+  echo $exploded [1]; // Mes
+  echo "/";
+  echo $exploded [0]; // Ano
+  echo " ";
+  echo "Hora: ";
+  echo $exploded [3]; // Hora */
 
 //###### TITULOS DE LOS CAMPOS ######
 $pdf->SetDrawColor(169,169,169);
@@ -160,6 +194,11 @@ while ($renglon = mysqli_fetch_array($Result_Ver_Examenes_D))
                                             {
                                                  $renglon['Carrera_Alumno'] = "LNI";
                                             }
+                                            else if ($renglon['Carrera_Alumno'] == "Tronco Común")
+
+                                                  {
+                                                       $renglon['Carrera_Alumno'] = "TC";
+                                                  }
 
  // CONTENIDO DEL PDF COLUMNAS/DATOS.
   ++$i; // Contador ### comenzar de 1 a 20... dependiendo del numero de vueltas que de el array.
