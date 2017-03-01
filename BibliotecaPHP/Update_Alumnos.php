@@ -11,7 +11,7 @@
         echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     } else {
           //Recibir los valores del Formulario Editar..Alumnos
-        $Id_Alumno = $_REQUEST['Id_Alumno'];
+          $Id_Alumno = $_REQUEST['Id_Alumno'];
           $Matricula_Alumno = $_REQUEST['Matricula_Alumno'];
           $Nombre_Alumno = $_REQUEST['Nombre_Alumno'];
           $Carrera_Alumno = $_REQUEST['Carrera_Alumno'];

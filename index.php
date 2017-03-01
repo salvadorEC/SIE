@@ -36,7 +36,7 @@
       <div class="row">
         <!-- ############################# ACREDITACIONES #####################-->
         <div class="col-sm-offset-2 col-sm-8">
-          <a role="button" href="" class="btn btn-danger btn-lg btn-block"> <i class="fa fa-bookmark-o fa-4x" aria-hidden="true"></i> Acreditaciones </a>
+          <a role="button" href="TablasVistas/Acreditaciones.php" class="btn btn-danger btn-lg btn-block"> <i class="fa fa-bookmark-o fa-4x" aria-hidden="true"></i> Acreditaciones </a>
         </div>
       </div>
      </section>

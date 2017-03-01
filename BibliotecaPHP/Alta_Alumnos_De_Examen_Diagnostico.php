@@ -37,6 +37,16 @@
   //Guardar el resultado en un array
   $row = $Result_Ver_Alumno->fetch_assoc();
 
-  header('Location:../FormsAlta/Examenes_Diagnostico.php?Matricula_Alumno='.$row['Matricula_Alumno'].'');
+  if ($row['Carrera_Alumno']!="Tronco Común") // Buscar en la base de datos para ver si el alumno que se registro es de Tronco Comun y si no es .. que lo mande a pagar.
+    {
+      // Si el alumno no es de Tronco Comun
+      header('Location:../FormsAlta/Alta_Alumno_De_Examen_Diagnostico_Pago_No_TC.php?Matricula_Alumno='.$row['Matricula_Alumno'].'');
+    }
+    else
+      {
+        // Si el alumno si es de Tronco Comun
+        header('Location:../FormsAlta/Examenes_Diagnostico.php?Matricula_Alumno='.$row['Matricula_Alumno'].'');
+      }
+
 
 ?>
