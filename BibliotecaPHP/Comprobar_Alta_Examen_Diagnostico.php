@@ -11,6 +11,7 @@ include "../configuracion.php";
 
 //Conectar a la base de datos
 $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+$acentos = $mysqli->query("SET NAMES 'utf8'");
 
 
 //############## E X A M E N E S - D I A G N O S T I C O - PAGAR O NO - ################################

@@ -4,6 +4,7 @@
 
   //Conectar a la base de datos
   $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+  $acentos = $mysqli->query("SET NAMES 'utf8'");
 
   //Recibir la matricula que se envia desde BibliotecaPHP/Comprobar_Alta_Examen_Diagnostico.php
   $Matricula_De_Comprobacion = $_GET['Matricula_AlumnoD'];

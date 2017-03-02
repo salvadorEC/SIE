@@ -4,6 +4,7 @@
 
   //Conectar a la base de datos
   $mysqli = new mysqli($SERVIDOR, $USER, $PASS, $BD);
+  $acentos = $mysqli->query("SET NAMES 'utf8'");
 
     //Comprobar la conexion a la base de datos
     if ($mysqli->connect_errno) {

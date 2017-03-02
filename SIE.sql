@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.1
--- https://www.phpmyadmin.net/
+-- version 4.4.15.5
+-- http://www.phpmyadmin.net
 --
--- Servidor: localhost:8889
--- Tiempo de generación: 02-03-2017 a las 08:31:24
--- Versión del servidor: 5.6.34
--- Versión de PHP: 7.1.0
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 02-03-2017 a las 20:27:41
+-- Versión del servidor: 5.6.34-log
+-- Versión de PHP: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,31 +17,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `SIE`
+-- Base de datos: `sie`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ACREDITACIONES`
+-- Estructura de tabla para la tabla `acreditaciones`
 --
 
-CREATE TABLE `ACREDITACIONES` (
+CREATE TABLE IF NOT EXISTS `acreditaciones` (
   `Id_Acreditacion` int(11) NOT NULL,
   `No_Lote` int(11) NOT NULL,
   `No_Oficio` int(11) NOT NULL,
-  `Periodo` varchar(10) NOT NULL,
-  `Fecha_Acreditacion` varchar(20) NOT NULL,
+  `Periodo` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `Fecha_Acreditacion` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Matricula_Acreditacion` varchar(10) NOT NULL,
-  `Idioma` varchar(50) NOT NULL,
+  `Idioma` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `Nivel_Acreditacion` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1480 DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `ACREDITACIONES`
+-- Volcado de datos para la tabla `acreditaciones`
 --
 
-INSERT INTO `ACREDITACIONES` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Periodo`, `Fecha_Acreditacion`, `Matricula_Acreditacion`, `Idioma`, `Nivel_Acreditacion`) VALUES
+INSERT INTO `acreditaciones` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Periodo`, `Fecha_Acreditacion`, `Matricula_Acreditacion`, `Idioma`, `Nivel_Acreditacion`) VALUES
 (3, 9, 0, '2014-1', '27/01/2014', '01108017', 'Inglés', 'No Registrado'),
 (4, 9, 0, '2014-1', '27/01/2014', '01114400', 'Inglés', 'No Registrado'),
 (5, 9, 0, '2014-1', '27/01/2014', '01114516', 'Inglés', 'No Registrado'),
@@ -732,7 +732,7 @@ INSERT INTO `ACREDITACIONES` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Period
 (690, 41, 2818, '2014-2', '05/01/2015', '01127451', 'No Registrado', 'No Registrado'),
 (691, 41, 2819, '2014-2', '05/01/2015', '00197585', 'No Registrado', 'No Registrado'),
 (692, 42, 3038, '2014-2', '26/01/2015', '01114003', 'No Registrado', 'No Registrado');
-INSERT INTO `ACREDITACIONES` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Periodo`, `Fecha_Acreditacion`, `Matricula_Acreditacion`, `Idioma`, `Nivel_Acreditacion`) VALUES
+INSERT INTO `acreditaciones` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Periodo`, `Fecha_Acreditacion`, `Matricula_Acreditacion`, `Idioma`, `Nivel_Acreditacion`) VALUES
 (693, 42, 3039, '2014-2', '26/01/2015', '01114053', 'No Registrado', 'No Registrado'),
 (694, 42, 3040, '2014-2', '26/01/2015', '01114141', 'No Registrado', 'No Registrado'),
 (695, 42, 3041, '2014-2', '26/01/2015', '01102252', 'No Registrado', 'No Registrado'),
@@ -1413,7 +1413,7 @@ INSERT INTO `ACREDITACIONES` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Period
 (1370, 4, 3152, '2015-2', '25/01/2016', '01120752', 'Inglés', '3er.'),
 (1371, 4, 3153, '2015-2', '25/01/2016', '01126879', 'Inglés', '3er.'),
 (1372, 4, 3154, '2015-2', '25/01/2016', '01127308', 'Inglés', '3er.');
-INSERT INTO `ACREDITACIONES` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Periodo`, `Fecha_Acreditacion`, `Matricula_Acreditacion`, `Idioma`, `Nivel_Acreditacion`) VALUES
+INSERT INTO `acreditaciones` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Periodo`, `Fecha_Acreditacion`, `Matricula_Acreditacion`, `Idioma`, `Nivel_Acreditacion`) VALUES
 (1373, 4, 3155, '2015-2', '25/01/2016', '01127683', 'Inglés', '3er.'),
 (1374, 4, 3156, '2015-2', '25/01/2016', '01120860', 'Inglés', '3er.'),
 (1375, 4, 3157, '2015-2', '25/01/2016', '01127681', 'Inglés', '3er.'),
@@ -1525,22 +1525,22 @@ INSERT INTO `ACREDITACIONES` (`Id_Acreditacion`, `No_Lote`, `No_Oficio`, `Period
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ALUMNOS`
+-- Estructura de tabla para la tabla `alumnos`
 --
 
-CREATE TABLE `ALUMNOS` (
+CREATE TABLE IF NOT EXISTS `alumnos` (
   `Id_Alumno` int(11) NOT NULL,
   `Matricula_Alumno` varchar(10) NOT NULL,
   `Nombre_Alumno` varchar(70) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `Carrera_Alumno` varchar(50) NOT NULL,
-  `Semestre_Alumno` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Carrera_Alumno` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `Semestre_Alumno` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1485 DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `ALUMNOS`
+-- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrera_Alumno`, `Semestre_Alumno`) VALUES
+INSERT INTO `alumnos` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrera_Alumno`, `Semestre_Alumno`) VALUES
 (1484, '000023', 'Prueba 2', 'Licenciado en Mercadotecnia', '6'),
 (1, '00015388', 'Lugo Morales Ana Rocio', 'Licenciado en Contaduría', '1'),
 (2, '00107618', ' APOLINAR LOPEZ DARIO', 'Licenciado en Negocios Internacionales', '2'),
@@ -2102,7 +2102,7 @@ INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrer
 (558, '01112500', 'Morquecho Muñoz Asgard', 'Licenciado en Mercadotecnia', '2'),
 (559, '01112515', 'Zorrilla Mendoza José Armando ', 'Licenciado en Contaduría', '2'),
 (560, '01112517', 'VAZQUEZ AYON BERNARDA VIANEY', 'Licenciado en Mercadotecnia', '1');
-INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrera_Alumno`, `Semestre_Alumno`) VALUES
+INSERT INTO `alumnos` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrera_Alumno`, `Semestre_Alumno`) VALUES
 (561, '01112524', 'Rivera Mendez Daniel', 'Licenciado en Negocios Internacionales', '2'),
 (562, '01112526', 'González Nava Mario Alberto', 'Licenciado en Contaduría', '1'),
 (563, '01112527', 'Zúñiga Chávez Liliana ', 'Licenciado en Contaduría', '1'),
@@ -2666,7 +2666,7 @@ INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrer
 (1121, '01122075', 'PEÑA MEDINA BRENDA SILVIA', 'Licenciado en Administración de Empresas', '1'),
 (1122, '01122077', 'FLORES MONDACA MILTON OVETH', 'Licenciado en Administración de Empresas', '1'),
 (1123, '01122081', 'LORANCA LOPEZ JUDITH', 'Licenciado en Administración de Empresas', '2');
-INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrera_Alumno`, `Semestre_Alumno`) VALUES
+INSERT INTO `alumnos` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrera_Alumno`, `Semestre_Alumno`) VALUES
 (1124, '01122084', 'ISIDRO REGINO MARCO ANTONIO', 'Licenciado en Administración de Empresas', '2'),
 (1125, '01122091', 'SALDANA DURAN AMAIRANY', 'Licenciado en Contaduría', '2'),
 (1126, '01122100', 'MAGAÑA MONTES DE OCA MARLEN', 'Licenciado en Administración de Empresas', '2'),
@@ -2986,7 +2986,6 @@ INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrer
 (1440, '01134735', 'ROUSE MADRIGAL MARIANA ', 'Licenciado en Gestión Turística', '2'),
 (1441, '01134762', 'CISNEROS MARRON ALBA MARINA', 'Licenciado en Negocios Internacionales', '1'),
 (1442, '01134815', 'Echavarria Contreras Salvador', 'Licenciado en Informática', '6'),
-(1443, '01134820', 'Echavarria Contreras Salvador', 'Tronco Común', '1'),
 (1444, '01134839', 'REAL CABELLO ESTHER', 'Licenciado en Mercadotecnia', '1'),
 (1445, '01134919', 'ZAMACONA ZARAGOZA NAHUM', 'Licenciado en Contaduría', '1'),
 (1446, '01135013', 'MARTINEZ BARAJAS OSCAR', 'Licenciado en Gestión Turística', '1'),
@@ -3029,10 +3028,10 @@ INSERT INTO `ALUMNOS` (`Id_Alumno`, `Matricula_Alumno`, `Nombre_Alumno`, `Carrer
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `EXAMENES_DIAGNOSTICO`
+-- Estructura de tabla para la tabla `examenes_diagnostico`
 --
 
-CREATE TABLE `EXAMENES_DIAGNOSTICO` (
+CREATE TABLE IF NOT EXISTS `examenes_diagnostico` (
   `Id_ExamenD` int(11) NOT NULL,
   `Fecha_ExamenD` varchar(20) NOT NULL,
   `Matricula_AlumnoD` varchar(10) NOT NULL,
@@ -3041,39 +3040,27 @@ CREATE TABLE `EXAMENES_DIAGNOSTICO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `EXAMENES_DIAGNOSTICO`
---
-
-INSERT INTO `EXAMENES_DIAGNOSTICO` (`Id_ExamenD`, `Fecha_ExamenD`, `Matricula_AlumnoD`, `Nivel_ExamenD`, `No_Recibo_ED`) VALUES
-(1, '234234', '01108148', 'Nivel4', '44444'),
-(2, '2017', '00108148', 'nivel 8', '2222'),
-(3, '2333', '1103391', 'Nievel4', '333'),
-(4, '2333', '1103391', 'Nievel4', '333'),
-(7, '2017-03-02T03:04', '000023', 'Solicitud', '123'),
-(8, '2017-03-02T22:03', '01134815', 'Solicitud', '2415');
-
---
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `ACREDITACIONES`
+-- Indices de la tabla `acreditaciones`
 --
-ALTER TABLE `ACREDITACIONES`
+ALTER TABLE `acreditaciones`
   ADD PRIMARY KEY (`Id_Acreditacion`),
   ADD KEY `Matricula` (`Matricula_Acreditacion`);
 
 --
--- Indices de la tabla `ALUMNOS`
+-- Indices de la tabla `alumnos`
 --
-ALTER TABLE `ALUMNOS`
+ALTER TABLE `alumnos`
   ADD PRIMARY KEY (`Matricula_Alumno`),
   ADD UNIQUE KEY `Id_Alumno` (`Id_Alumno`);
 
 --
--- Indices de la tabla `EXAMENES_DIAGNOSTICO`
+-- Indices de la tabla `examenes_diagnostico`
 --
-ALTER TABLE `EXAMENES_DIAGNOSTICO`
+ALTER TABLE `examenes_diagnostico`
   ADD PRIMARY KEY (`Id_ExamenD`),
   ADD KEY `Matricula_Alumno` (`Matricula_AlumnoD`),
   ADD KEY `Matricula_Alumno_2` (`Matricula_AlumnoD`);
@@ -3083,35 +3070,35 @@ ALTER TABLE `EXAMENES_DIAGNOSTICO`
 --
 
 --
--- AUTO_INCREMENT de la tabla `ACREDITACIONES`
+-- AUTO_INCREMENT de la tabla `acreditaciones`
 --
-ALTER TABLE `ACREDITACIONES`
-  MODIFY `Id_Acreditacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1480;
+ALTER TABLE `acreditaciones`
+  MODIFY `Id_Acreditacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1480;
 --
--- AUTO_INCREMENT de la tabla `ALUMNOS`
+-- AUTO_INCREMENT de la tabla `alumnos`
 --
-ALTER TABLE `ALUMNOS`
-  MODIFY `Id_Alumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1485;
+ALTER TABLE `alumnos`
+  MODIFY `Id_Alumno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1485;
 --
--- AUTO_INCREMENT de la tabla `EXAMENES_DIAGNOSTICO`
+-- AUTO_INCREMENT de la tabla `examenes_diagnostico`
 --
-ALTER TABLE `EXAMENES_DIAGNOSTICO`
-  MODIFY `Id_ExamenD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `examenes_diagnostico`
+  MODIFY `Id_ExamenD` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `ACREDITACIONES`
+-- Filtros para la tabla `acreditaciones`
 --
-ALTER TABLE `ACREDITACIONES`
-  ADD CONSTRAINT `acreditaciones_ibfk_1` FOREIGN KEY (`Matricula_Acreditacion`) REFERENCES `ALUMNOS` (`Matricula_Alumno`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `acreditaciones`
+  ADD CONSTRAINT `acreditaciones_ibfk_1` FOREIGN KEY (`Matricula_Acreditacion`) REFERENCES `alumnos` (`Matricula_Alumno`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `EXAMENES_DIAGNOSTICO`
+-- Filtros para la tabla `examenes_diagnostico`
 --
-ALTER TABLE `EXAMENES_DIAGNOSTICO`
-  ADD CONSTRAINT `examenes_diagnostico_ibfk_1` FOREIGN KEY (`Matricula_AlumnoD`) REFERENCES `ALUMNOS` (`Matricula_Alumno`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `examenes_diagnostico`
+  ADD CONSTRAINT `examenes_diagnostico_ibfk_1` FOREIGN KEY (`Matricula_AlumnoD`) REFERENCES `alumnos` (`Matricula_Alumno`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

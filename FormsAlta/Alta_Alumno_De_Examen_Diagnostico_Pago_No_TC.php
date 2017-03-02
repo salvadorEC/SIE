@@ -4,6 +4,7 @@
 
   //Conectar a la base de datos
   $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+  $acentos = $mysqli->query("SET NAMES 'utf8'");
 
   //Recibir la matricula que se envia desde FormsAlta/Alumno_A_Examen_Diagnostico.php
   $Matricula_Alumno = $_GET['Matricula_Alumno'];
