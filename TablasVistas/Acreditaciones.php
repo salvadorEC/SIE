@@ -73,7 +73,7 @@ if ($mysqli->connect_errno) {
                 <td class="text-center"><?php echo $renglon['No_Lote']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Periodo']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['No_Oficio']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td class="text-center"><?php echo utf8_decode($renglon['Idioma'])?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                <td class="text-center"><?php echo $renglon['Idioma']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Nivel_Acreditacion']?></td>
                 <td class="text-center"><?php echo $renglon['Fecha_Acreditacion']?></td>
                 <td><a class="btn btn-success" role ="button" href=""> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->

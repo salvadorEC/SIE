@@ -102,7 +102,7 @@ $resultInfo = $mysqli->query($verInfo);
             <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-            <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+            <!-- <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?//php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> --> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
           </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
           <?php
  }?>
