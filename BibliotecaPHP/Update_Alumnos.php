@@ -18,7 +18,7 @@
           $Semestre_Alumno = $_REQUEST['Semestre_Alumno'];
 
         //Hacer el Query Update a la base de datos .. tabla Alumnos.
-        $UpdateAlumno = "UPDATE ALUMNOS SET Matricula_Alumno='".$Matricula_Alumno."',Nombre_Alumno='".$Nombre_Alumno."',Carrera_Alumno='".$Carrera_Alumno."',Semestre_Alumno='".$Semestre_Alumno."' WHERE Id_Alumno = '".$Id_Alumno."'";
+        $UpdateAlumno = "UPDATE $ALUMNOS SET Matricula_Alumno='".$Matricula_Alumno."',Nombre_Alumno='".$Nombre_Alumno."',Carrera_Alumno='".$Carrera_Alumno."',Semestre_Alumno='".$Semestre_Alumno."' WHERE Id_Alumno = '".$Id_Alumno."'";
           $Query = $mysqli->query($UpdateAlumno);
 
           header("Location:../TablasVistas/Alumnos_agrupados_por_carrera.php");

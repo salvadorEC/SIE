@@ -12,7 +12,7 @@
 
     $Matricula_Alumno = $_REQUEST['Matricula_Alumno'];
 
-    $Ver_Alumno = "SELECT * FROM ALUMNOS WHERE Matricula_Alumno = '".$Matricula_Alumno."' ";
+    $Ver_Alumno = "SELECT * FROM $ALUMNOS WHERE Matricula_Alumno = '".$Matricula_Alumno."' ";
     $Result_Busqueda_Alumno = $mysqli->query($Ver_Alumno);
 
  ?>

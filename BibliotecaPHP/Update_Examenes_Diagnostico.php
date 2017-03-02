@@ -18,7 +18,7 @@
            $Nivel_ExamenD = $_REQUEST['Nivel_ExamenD'];
 
         //Hacer el Query Update a la base de datos .. tabla Alumnos.
-        $UpdateExamenD = "UPDATE EXAMENES_DIAGNOSTICO SET Fecha_ExamenD ='".$Fecha_ExamenD."', Matricula_AlumnoD = '".$Matricula_AlumnoD."', Nivel_ExamenD = '".$Nivel_ExamenD."' WHERE Id_ExamenD = '".$Id_ExamenD."' ";
+        $UpdateExamenD = "UPDATE $EXAMENES_DIAGNOSTICO SET Fecha_ExamenD ='".$Fecha_ExamenD."', Matricula_AlumnoD = '".$Matricula_AlumnoD."', Nivel_ExamenD = '".$Nivel_ExamenD."' WHERE Id_ExamenD = '".$Id_ExamenD."' ";
            $Query = $mysqli->query($UpdateExamenD);
 
            header("Location:../TablasVistas/Examenes_diagnostico.php");

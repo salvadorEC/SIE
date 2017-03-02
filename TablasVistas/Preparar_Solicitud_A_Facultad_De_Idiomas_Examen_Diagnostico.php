@@ -20,7 +20,7 @@ if ($mysqli->connect_errno) {
 // Recibir la fecha y hora del examen Diagnostico ...
 $Fecha_ExamenD = $_REQUEST['Fecha_ExamenD'];
 //Realizar la busqueda en la base de datos... parametro: Fecha y Hora del Examen Diagnostico.
-$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
+$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM $ALUMNOS INNER JOIN $EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
 $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 
 ?>

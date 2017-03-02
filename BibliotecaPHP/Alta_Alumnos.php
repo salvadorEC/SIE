@@ -25,14 +25,14 @@
   $Semestre_Alumno = $_REQUEST['Semestre_Alumno'];
 
   // Guardar datos en la base de datos.
-  $mysqli->query("INSERT INTO ALUMNOS (Id_Alumno,Matricula_Alumno,Nombre_Alumno,Carrera_Alumno,Semestre_Alumno)
+  $mysqli->query("INSERT INTO $ALUMNOS (Id_Alumno,Matricula_Alumno,Nombre_Alumno,Carrera_Alumno,Semestre_Alumno)
                   VALUES (NULL,'".$Matricula_Alumno."','".$Nombre_Alumno."','".$Carrera_Alumno."','".$Semestre_Alumno."')");
 
   //######### REGRESAR A LA VISTA DE REGISTRO EXAMENES_DIAGNOSTICO #########
 
   //Buscar en la base de datos A TODOS LOS ALUMNOS...
 
-  $Ver_Alumnos = "SELECT * FROM ALUMNOS WHERE Matricula_Alumno = '".$Matricula_Alumno."'";
+  $Ver_Alumnos = "SELECT * FROM $ALUMNOS WHERE Matricula_Alumno = '".$Matricula_Alumno."'";
   $Result_Ver_Alumno = $mysqli->query($Ver_Alumnos);
 
   //Guardar el resultado en un array

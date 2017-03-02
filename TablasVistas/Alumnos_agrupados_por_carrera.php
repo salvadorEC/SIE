@@ -7,27 +7,27 @@ include "../configuracion.php";
 $mysqli = new mysqli($SERVIDOR, $USER, $PASS, $BD);
 
 //VER ALUMNOS DE CONTABILIDAD
-$verConta = "SELECT * FROM ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Contaduría'";
+$verConta = "SELECT * FROM $ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Contaduría'";
 $resultConta = $mysqli->query($verConta);
 
 //VER ALUMNOS DE ADMINISTRACION
-$verLae = "SELECT * FROM ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Administración de Empresas'";
+$verLae = "SELECT * FROM $ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Administración de Empresas'";
 $resultLae = $mysqli->query($verLae);
 
 //VER ALUMNOS DE MERCADOTECNIA
-$verMerca = "SELECT * FROM ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Mercadotecnia'";
+$verMerca = "SELECT * FROM $ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Mercadotecnia'";
 $resultMerca = $mysqli->query($verMerca);
 
 //VER ALUMNOS DE TURISMO
-$verTurismo = "SELECT * FROM ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Gestión Turística'";
+$verTurismo = "SELECT * FROM $ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Gestión Turística'";
 $resultTurismo = $mysqli->query($verTurismo);
 
 //VER ALUMNOS DE NEGOCIOS
-$verNegocios = "SELECT * FROM ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Negocios Internacionales'";
+$verNegocios = "SELECT * FROM $ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Negocios Internacionales'";
 $resultNegocios = $mysqli->query($verNegocios);
 
 //VER ALUMNOS DE INFORMATICA
-$verInfo = "SELECT * FROM ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Informática'";
+$verInfo = "SELECT * FROM $ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Informática'";
 $resultInfo = $mysqli->query($verInfo);
 
   //Comprobar la conexion a la base de datos

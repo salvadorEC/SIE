@@ -22,7 +22,7 @@
   // Recibir el valor de la fecha examen diagnostico del url. de la direccion BibliotecaPHP/Update_Examenes_Diagnostico_Editar_Nivel.php
   $Fecha_ExamenD = $_GET['Fecha_ExamenD'];
   //Hacer la consulta a la base de datos usando como parametro le Fecha_ExamenD.
-  $ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
+  $ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM $ALUMNOS INNER JOIN $EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
   $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 
  ?>

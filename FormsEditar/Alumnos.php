@@ -16,7 +16,7 @@
           $mat = $_GET['Matricula_Alumno'];
 
             //Realizar la consulta a la base de datos SIE
-            $Ver_Alumno = "SELECT * FROM ALUMNOS WHERE Matricula_Alumno = '".$mat."'";
+            $Ver_Alumno = "SELECT * FROM $ALUMNOS WHERE Matricula_Alumno = '".$mat."'";
             $Result_ver_alumno = $mysqli->query($Ver_Alumno);
 
           //Guardar el resiultado en un array

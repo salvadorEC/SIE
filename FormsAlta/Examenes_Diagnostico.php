@@ -8,7 +8,7 @@
   //Recibir la matricula que se envia desde BibliotecaPHP/Comprobar_Alta_Examen_Diagnostico.php
   $Matricula_De_Comprobacion = $_GET['Matricula_Alumno'];
   //Enviar la matricula al formulario para no volver a escribirla de nuevo
-  $Ver_Alumnos = "SELECT * FROM ALUMNOS WHERE Matricula_Alumno = '".$Matricula_De_Comprobacion."'";
+  $Ver_Alumnos = "SELECT * FROM $ALUMNOS WHERE Matricula_Alumno = '".$Matricula_De_Comprobacion."'";
   $Result_Ver_Alumno = $mysqli->query($Ver_Alumnos);
 
   //Guardar el resultado en un array

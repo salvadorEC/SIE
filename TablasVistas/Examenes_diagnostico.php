@@ -9,7 +9,7 @@ $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
 
 //############## E X A M E N E S - D I A G N O S T I C O ################################
 
-$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM ALUMNOS INNER JOIN EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD;";
+$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM $ALUMNOS INNER JOIN $EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD;";
 $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 ?>
 

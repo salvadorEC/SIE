@@ -14,7 +14,7 @@
             {
               //query a la base de datos
               $Id_ExamenD = $_GET['Id_ExamenD'];
-              $Eliminar_ExamenD = "DELETE FROM EXAMENES_DIAGNOSTICO WHERE Id_ExamenD = '".$Id_ExamenD."' ";
+              $Eliminar_ExamenD = "DELETE FROM $EXAMENES_DIAGNOSTICO WHERE Id_ExamenD = '".$Id_ExamenD."' ";
               $Result_Eliminar_ExamenD = $mysqli->query($Eliminar_ExamenD);
 
               header("Location:../TablasVistas/Examenes_diagnostico.php");

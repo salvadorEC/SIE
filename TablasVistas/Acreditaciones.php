@@ -12,7 +12,7 @@ $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
 
 //SELECT TABLA ACREDITACIONES
 
-$Ver_Acreditaciones= "SELECT * FROM ACREDITACIONES ";
+$Ver_Acreditaciones= "SELECT * FROM $ACREDITACIONES ";
 $Result_Ver_Acreditaciones = $mysqli->query($Ver_Acreditaciones);
 
 

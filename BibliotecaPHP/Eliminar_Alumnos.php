@@ -14,7 +14,7 @@
             {
               //query a la base de datos
               $Matricula_Alumno = $_GET['Matricula_Alumno'];
-              $Eliminar_Alumno = "DELETE FROM ALUMNOS WHERE Matricula_Alumno = '".$Matricula_Alumno."' ";
+              $Eliminar_Alumno = "DELETE FROM $ALUMNOS WHERE Matricula_Alumno = '".$Matricula_Alumno."' ";
               $Result_Eliminar_Alumno = $mysqli->query($Eliminar_Alumno);
 
               header("Location:../TablasVistas/Alumnos_agrupados_por_carrera.php");

@@ -15,7 +15,7 @@
   $Id_ExamenD = $_GET['Id_ExamenD'];
 
     //Realizar la consulta a la base de datos SIE
-    $Ver_ExamenD = "SELECT * FROM EXAMENES_DIAGNOSTICO WHERE Id_ExamenD = '".$Id_ExamenD."'";
+    $Ver_ExamenD = "SELECT * FROM $EXAMENES_DIAGNOSTICO WHERE Id_ExamenD = '".$Id_ExamenD."'";
     $Result_ver_examen_d = $mysqli->query($Ver_ExamenD);
 
   //Guardar el resiultado en un array
