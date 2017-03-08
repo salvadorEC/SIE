@@ -4,6 +4,7 @@
 
   //Conectar a la base de datos
   $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+  $acentos = $mysqli->query("SET NAMES 'utf8'");
 
     //Comprobar la conexion a la base de datos
     if ($mysqli->connect_errno)
@@ -18,7 +19,7 @@
     $Ver_ExamenD = "SELECT * FROM $EXAMENES_DIAGNOSTICO WHERE Id_ExamenD = '".$Id_ExamenD."'";
     $Result_ver_examen_d = $mysqli->query($Ver_ExamenD);
 
-  //Guardar el resiultado en un array
+  //Guardar el resultado en un array
   $row = $Result_ver_examen_d->fetch_assoc();
 
 ?>

@@ -2,9 +2,9 @@
 
  ###########################################################
  #    MENU PARA GENERAR REPORTES DE EXAMENES DIAGNOSTICO   #
- #    SE MUESTRA UN MENU CON DOS OPCIONES                  #
+ #    SE MUESTRA UN MENU CON LA  OPCION                    #
  #      1. PARA GENERAR UNA SOLICITUD (SIN NIVEL)          #
- #      2. PARA GENERAR UN REPORTE (CON NIVEL)             #
+ #                                                         #
  ###########################################################
 
 

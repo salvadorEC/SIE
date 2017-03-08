@@ -5,6 +5,7 @@ include "../configuracion.php";
 
 //Conectar a la base de datos
 $mysqli = new mysqli($SERVIDOR, $USER, $PASS, $BD);
+$acentos = $mysqli->query("SET NAMES 'utf8'");
 
 //VER ALUMNOS DE CONTABILIDAD
 $verConta = "SELECT * FROM $ALUMNOS WHERE Carrera_Alumno = 'Licenciado en Contaduría'";
@@ -92,6 +93,7 @@ $resultInfo = $mysqli->query($verInfo);
         <!-- CODIGO PHP CON CODIGO HTML-->
         <?php while ($renglon = mysqli_fetch_array($resultConta)) {
      ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+
         <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
         <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Id_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
@@ -100,7 +102,7 @@ $resultInfo = $mysqli->query($verInfo);
             <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-            <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+            <!-- <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?//php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> --> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
           </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
           <?php
  }?>
@@ -172,7 +174,7 @@ $resultInfo = $mysqli->query($verInfo);
           <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <td class="text-center"><?php echo $renglon['Id_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <td class="text-center"><?php echo $renglon['Matricula_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-              <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+              <td class="text-center"><?php echo utf8_decode($renglon['Nombre_Alumno'])?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->

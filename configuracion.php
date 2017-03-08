@@ -1,10 +1,10 @@
 <?php
   //CONFIGURACION DEL SERVIDOR Y LA BASE DE DATOS
-  $SERVIDOR = "localhost:8889";
+  $SERVIDOR = "localhost";
   $USER = "root";
   $PASS = "root";
-  $BD = "SIE";
-  $ALUMNOS = "ALUMNOS";
-  $EXAMENES_DIAGNOSTICO = "EXAMENES_DIAGNOSTICO";
-  $ACREDITACIONES = "ACREDITACIONES";
+  $BD = "sie";
+  $ALUMNOS = "alumnos";
+  $EXAMENES_DIAGNOSTICO = "examenes_diagnostico";
+  $ACREDITACIONES = "acreditaciones";
 ?>
