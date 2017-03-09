@@ -15,7 +15,7 @@
         <div class="form-group"> <!--Agrupar Label y El Input-->
           <label class="control-label col-sm-2">Matricula</label> <!--Label-->
           <div class="col-sm-8"> <!--Input-->
-            <input class="form-control" type="text" name="Matricula_Alumno" value ="<?php echo $Matricula_De_Comprobacion ?>" placeholder="Ej, 01134815" required="required">
+            <input class="form-control" type="text" name="Matricula_Alumno" placeholder="Ej, 01134815" required="required">
           </div>
         </div>
         <div class="form-group">
