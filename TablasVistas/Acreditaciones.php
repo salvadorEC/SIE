@@ -14,9 +14,19 @@
   <body>
 
     <div class="jumbotron">
-      <h2 class="col-sm-offset-5">ACREDITACIONES</h2>
+      <h2 class="col-sm-offset-4">ACREDITACIONES</h2>
     </div>
-    <div class="row">
+
+      <!-- ########   boton AGREGAR MENU PRINCIPAL ######### -->
+      <div class="row">
+        <div class="col-sm-offset-4">
+          <div class="col-sm-4">
+            <a href="../index.php" class="btn btn-primary btn-lg btn-block"> </i> Menu Principal </a>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
       <!-- ########   boton AGREGAR Solicitudes_Acreditaciones ######### -->
       <div class="col-sm-offset-2">
         <div class="col-sm-4 ">

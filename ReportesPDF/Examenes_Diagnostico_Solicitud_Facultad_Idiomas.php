@@ -85,17 +85,17 @@ function Header()
 // ######## Pie de página #######
 function Footer()
 {
-    // Posición: a 1,5 cm del final
-    $this->SetY(-30);
+    // Posición: Mover hacia arriba
+    $this->SetY(-45);
     // Arial italic 8
     $this->SetFont('Arial','I',12);
-    // Número de página
+    // Pie de pagina
     $this->SetX(100);
     $this->Cell(10,10,utf8_decode('_________________________________________'),0,0,'C');
     $this->Ln(10);
     $this->SetX(100);
     $this->Cell(10,10,utf8_decode('COORDINACIÓN IDIOMA EXTRANJERO'),0,0,'C');
-    $this->Ln(10);
+    $this->Ln(5);
     $this->SetX(100);
     $this->Cell(10,10,utf8_decode('C.P. Mayra Gutiérrez Escoboza '),0,0,'C');
 
@@ -152,7 +152,7 @@ $pdf->Ln(6);
 
 
 
-
+$i = 1; // Contador..
 //Sacar todos los registros
 while ($renglon = mysqli_fetch_array($Result_Ver_Examenes_D))
   {
@@ -202,7 +202,7 @@ while ($renglon = mysqli_fetch_array($Result_Ver_Examenes_D))
                                                   }
 
  // CONTENIDO DEL PDF COLUMNAS/DATOS.
-  ++$i; // Contador ### comenzar de 1 a 20... dependiendo del numero de vueltas que de el array.
+  $i++; // Contador ### comenzar de 1 a 20... dependiendo del numero de vueltas que de el array.
   $pdf->Ln(6);
   $pdf->SetFont('Arial','',10);
   $pdf->SetX(10);

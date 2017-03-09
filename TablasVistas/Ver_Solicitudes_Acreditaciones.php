@@ -9,6 +9,7 @@ include "../configuracion.php";
 
 //Conectar a la base de datos
 $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+$acentos = $mysqli->query("SET NAMES 'utf8'");
 
 
 //SELECT TABLA ACREDITACIONES MOSTRAR: Acreditaciones WHERE x Fecha_Acreditacion - Nombre Alumno Ordenado alfabeticamente.
@@ -65,12 +66,13 @@ if ($mysqli->connect_errno) {
         <tbody>
           <tbody>
             <?php
+              $numero = 1;
               while ($renglon = mysqli_fetch_array($Result_Ver_Acreditaciones))
-                {  $numero ++;
+                {
             ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
             <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
             <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td class="text-center"><?php echo $numero ?></td> <!-- Contar cuantos registros hay-->
+                <td class="text-center"><?php echo $numero++; ?></td> <!-- Contar cuantos registros hay-->
                 <td class="text-center"><?php echo $renglon['Ano_Acreditacion']?></td>
                 <td class="text-center"><?php echo $renglon['Periodo']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Matricula_Acreditacion']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->

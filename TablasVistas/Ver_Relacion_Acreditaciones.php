@@ -9,10 +9,11 @@ include "../configuracion.php";
 
 //Conectar a la base de datos
 $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+$acentos = $mysqli->query("SET NAMES 'utf8'");
 
 //SELECT TABLA ACREDITACIONES
 
-$Ver_Acreditaciones= "SELECT DISTINCT * FROM $ACREDITACIONES ORDER BY Fecha_Acreditacion DESC ";
+$Ver_Acreditaciones= "SELECT * FROM $ACREDITACIONES INNER JOIN $ALUMNOS ON Matricula_Acreditacion = Matricula_Alumno ORDER BY Ano_Acreditacion DESC ";
 $Result_Ver_Acreditaciones = $mysqli->query($Ver_Acreditaciones);
 
 
@@ -34,49 +35,65 @@ if ($mysqli->connect_errno) {
   <body>
 
     <div class="jumbotron">
-      <h2 class="col-sm-offset-5">ACREDITACIONES</h2>
+      <h2 class="col-sm-offset-4">RELACION ACREDITACIONES</h2>
+    </div>
+    <!-- ########   BOTON GENERAR EXCEL ######### -->
+    <div class="row">
+      <div class="col-sm-offset-4">
+        <div class="col-sm-5">
+          <a href="" class="btn btn-success btn-lg btn-block"> <i class="fa fa-download" aria-hidden="true"></i> Generar Excel</a>
+        </div>
+      </div>
     </div>
 
-
     <div class="container">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th class="text-center">Matricula</th>
-            <th class="text-center">N0.Lote</th>
-            <th class="text-center">Periodo</th>
-            <th class="text-center">N0.Oficio</th>
-            <th class="text-center">Idioma</th>
-            <th class="text-center">Nivel</th>
-            <th class="text-center">Fecha Acreditacion</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">#</th>
+              <th class="text-center">N0.Lote</th>
+              <th class="text-center">Año</th>
+              <th class="text-center">Semestre</th>
+              <th class="text-center">N0.Oficio</th>
+              <th class="text-center">Periodo</th>
+              <th class="text-center">Nombre Alumno</th>
+              <th class="text-center">Matricula</th>
+              <th class="text-center">Carrera</th>
+              <th class="text-center">Fecha Acreditación</th>
+              <th class="text-center">Idioma</th>
+              <th class="text-center">Nivel</th>
+              <th></th>
+            </tr>
+          </thead>
           <tbody>
-            <?php
-              while ($renglon = mysqli_fetch_array($Result_Ver_Acreditaciones))
-                {
-            ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
-            <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
-            <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td class="text-center"><?php echo $renglon['Matricula_Acreditacion']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td class="text-center"><?php echo $renglon['No_Lote']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td class="text-center"><?php echo $renglon['Periodo']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td class="text-center"><?php echo $renglon['No_Oficio']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td class="text-center"><?php echo $renglon['Idioma']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                <td class="text-center"><?php echo $renglon['Nivel_Acreditacion']?></td>
-                <td class="text-center"><?php echo $renglon['Fecha_Acreditacion']?></td>
-                <td><a class="btn btn-success" role ="button" href=""> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-                <td><a class="btn btn-danger" role="button" href=""> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
-              </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-            <?php
-                }
-            ?>
-          </tbody> <!-- Final Cuerpo de la Tabla de Contabilidad -->
-        </tbody>
-      </table>
+            <tbody>
+              <?php
+                $numero = 1;
+                while ($renglon = mysqli_fetch_array($Result_Ver_Acreditaciones))
+                  {
+              ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+              <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
+              <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                  <td class="text-center"><?php echo $numero++; ?></td>
+                  <td class="text-center"><?php echo $renglon['No_Lote']?></td>
+                  <td class="text-center"><?php echo $renglon['Ano_Acreditacion']?></td>
+                  <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td>
+                  <td class="text-center"><?php echo $renglon['No_Oficio']?></td>
+                  <td class="text-center"><?php echo $renglon['Periodo']?></td>
+                  <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                  <td class="text-center"><?php echo $renglon['Matricula_Acreditacion']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                  <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                  <td class="text-center"><?php echo $renglon['Fecha_Acreditacion']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                  <td class="text-center"><?php echo $renglon['Idioma']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                  <td class="text-center"><?php echo $renglon['Nivel_Acreditacion']?></td>
+                </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+              <?php
+                  }
+              ?>
+            </tbody> <!-- Final Cuerpo de la Tabla de Contabilidad -->
+          </tbody>
+        </table>
     </div>
 
 
