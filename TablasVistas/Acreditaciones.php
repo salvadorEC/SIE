@@ -30,7 +30,7 @@
       <!-- ########   boton AGREGAR Solicitudes_Acreditaciones ######### -->
       <div class="col-sm-offset-2">
         <div class="col-sm-4 ">
-          <a href="../FormsAlta/Alta_Solicitud_Acreditacion.php" class="btn btn-success btn-lg btn-block"> <i class="fa fa-plus-square fa-4x" aria-hidden="true"></i> Nueva Solicitud</a>
+          <a href="../FormsAlta/Registro_Solicitud_Acreditacion.php" class="btn btn-success btn-lg btn-block"> <i class="fa fa-plus-square fa-4x" aria-hidden="true"></i> Nueva Solicitud</a>
         </div>
       </div>
      <!-- ##### BOTON PARA ACCEDER A LOTES DE ACREDITACIONES Y GENERAR NUEVOS LOTES ##### -->

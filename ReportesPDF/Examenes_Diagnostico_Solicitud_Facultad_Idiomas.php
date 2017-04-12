@@ -152,7 +152,7 @@ $pdf->Ln(6);
 
 
 
-$i = 1; // Contador..
+$numero = 0; // Contador..
 //Sacar todos los registros
 while ($renglon = mysqli_fetch_array($Result_Ver_Examenes_D))
   {
@@ -202,11 +202,11 @@ while ($renglon = mysqli_fetch_array($Result_Ver_Examenes_D))
                                                   }
 
  // CONTENIDO DEL PDF COLUMNAS/DATOS.
-  $i++; // Contador ### comenzar de 1 a 20... dependiendo del numero de vueltas que de el array.
+  $numero++; // Contador ### comenzar de 1 a 20... dependiendo del numero de vueltas que de el array.
   $pdf->Ln(6);
   $pdf->SetFont('Arial','',10);
   $pdf->SetX(10);
-  $pdf->Cell(10,5,''.$i,1,0,'C');
+  $pdf->Cell(10,5,''.$numero,1,0,'C');
   $pdf->SetX(21);
   $pdf->Cell(105,5,utf8_decode($renglon['Nombre_Alumno']),1,0,'');
   $pdf->SetX(127);

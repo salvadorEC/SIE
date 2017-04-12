@@ -44,13 +44,12 @@ if ($mysqli->connect_errno) {
     <div class="row">
       <div class="col-sm-offset-1">
         <a href="../TablasVistas/Preparar_Acreditaciones.php" class="btn btn-primary col-sm-1 "><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
-        <!-- ########   BOTON GENERAR EXCEL ######### -->
-          <div class="col-sm-offset-4">
-            <div class="col-sm-5">
-              <a href="" class="btn btn-default btn-lg btn-block"> <i class="fa fa-print" aria-hidden="true"></i> Imprimir Lote</a>
-            </div>
-          </div>
       </div>
+      <!-- ### BOTON IMPRIMIR TODOS LOS REGISTROS ###-->
+        <div class="col-sm-offset-5">
+          <a href="../ReportesPDF/Lote_Acreditaciones_Completo.php?Fecha_Acreditacion=<?php echo $Fecha_Por_Lote; ?>" class="btn btn-default col-sm-4 "><i class="fa fa-print fa-2x" aria-hidden="true"></i></a>
+        </div>
+    </div>
 
     <div class="container">
       <table class="table table-hover">
@@ -65,6 +64,7 @@ if ($mysqli->connect_errno) {
             <th class="text-center">Idioma</th>
             <th class="text-center">Nivel</th>
             <th class="text-center">Fecha Acreditacion</th>
+            <th class="text-center">Imprimir</th>
           </tr>
         </thead>
         <tbody>
@@ -85,6 +85,7 @@ if ($mysqli->connect_errno) {
                 <td class="text-center"><?php echo $renglon['Idioma']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Nivel_Acreditacion']?></td>
                 <td class="text-center"><?php echo $renglon['Fecha_Acreditacion']?></td>
+                <td><a href="../ReportesPDF/Lote_Acreditaciones.php?Id_Acreditacion=<?php echo $renglon['Id_Acreditacion']; ?>" target="_blank" class="btn btn-default btn-lg btn-block"> <i class="fa fa-print" aria-hidden="true"></i></a></td>
               </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <?php
                 }

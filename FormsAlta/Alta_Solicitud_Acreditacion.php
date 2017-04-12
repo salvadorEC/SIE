@@ -1,5 +1,20 @@
 <?php
 
+  // Incluir configuracion para conectar a la base de datos
+  include "../configuracion.php";
+
+  //Conectar a la base de datos
+  $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
+  $acentos = $mysqli->query("SET NAMES 'utf8'");
+
+  //##### RECIBIR MATRICULA DE BibliotecaPHP/Alta_Alumno_De_Solicitud_Acreditaciones.php PARA LLENAR EL FORM #####
+  $Matricula_Alumno = $_GET['Matricula_Alumno'];
+  //Ver al alumno
+  $Ver_Alumno = "SELECT * FROM $ALUMNOS WHERE Matricula_Alumno = '".$Matricula_Alumno."' ";
+  $Result_Ver_Alumno = $mysqli->query($Ver_Alumno);
+
+  // Guargar en el Array
+  $row = $Result_Ver_Alumno->fetch_assoc();
  ?>
 
  <html>
@@ -12,6 +27,15 @@
      <!--####### TITULO DE LA PAGINA ####### -->
      <div class="jumbotron">
        <h2>Registrar Solicitudes Acreditación</h2>
+       <!-- ########   boton AGREGAR MENU PRINCIPAL ######### -->
+       <div class="row">
+         <div class="col-sm-offset-1">
+           <div class="col-sm-4">
+             <a href="../TablasVistas/Acreditaciones.php" class="btn btn-primary"> </i> Menu Principal </a>
+           </div>
+         </div>
+       </div>
+
      </div>
     <!-- ########### F O R M U L A R I O - A L T A - A C R E D I T A C I O N #########-->
      <div class="container">
@@ -34,11 +58,24 @@
          <div class="form-group">
            <label class="control-label col-sm-2"> Matricula Alumno </label>
            <div class="col-sm-10">
-             <input class="form-control" type="text" name="Matricula_Acreditacion" placeholder="Formato: 01134815">
+             <label class="form-control"><?php echo $row['Matricula_Alumno']?></label>
+             <input class="form-control" type="hidden" name="Matricula_Acreditacion" value="<?php echo $row['Matricula_Alumno']?>">
            </div>
          </div>
-
-         <!-- ############### Version 1.0.1 AJAX APARECER NOMBRE, CARRERA, SEMESTRE, ALUMNO ######## -->
+         <!--####### NOMBRE ALUMNO ####### -->
+         <div class="form-group">
+           <label class="control-label col-sm-2"> Nombre: </label>
+           <div class="col-sm-4">
+             <label class="form-control" ><?php echo $row['Nombre_Alumno']?></label>
+          </div>
+          <!--####### CARRERA ALUMNO####### -->
+          <div class="col-sm-4">
+            <label class="form-control" ><?php echo $row['Carrera_Alumno']?></label>
+         </div>
+         <div class="col-sm-2">
+           <label class="form-control" >Semestre:  <?php echo $row['Semestre_Alumno']?></label>
+        </div>
+           </div>
 
          <!--####### Idioma ####### -->
          <div class="form-group">
@@ -56,6 +93,34 @@
              </select>
            </div>
          </div>
+
+        <!--####### NIVEL ####### -->
+         <div class="form-group">
+           <label class="control-label col-sm-2"> Nivel </label>
+           <div class="col-sm-10">
+             <select class="form-control" type="text" name="Nivel_Acreditacion">
+               <option>Nivel 1</option>
+               <option>Nivel 2</option>
+               <option>Nivel 3</option>
+               <option>Nivel 4</option>
+               <option>Nivel 5</option>
+               <option>Nivel 6</option>
+               <option>Nivel 7</option>
+             </select>
+           </div>
+         </div>
+
+         <!--####### ENTREGA DE DOCS ####### -->
+          <div class="form-group">
+            <label class="control-label col-sm-2"> Entrego Documentos </label>
+            <div class="col-sm-10">
+              <select class="form-control" type="text" name="Docs_Acreditacion">
+                <option>SI</option>
+                <option>NO</option>
+              </select>
+            </div>
+          </div>
+
        <!-- ######## GUARDAR ####### -->
        <div class="form-group">
          <div class="col-sm-offset-2 col-sm-10">

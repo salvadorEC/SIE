@@ -21,10 +21,12 @@
     $Periodo = $_REQUEST['Periodo'];
     $Matricula_Acreditacion = $_REQUEST['Matricula_Acreditacion'];
     $Idioma = $_REQUEST['Idioma'];
+    $Nivel_Acreditacion = $_REQUEST['Nivel_Acreditacion'];
+    $Docs_Acreditacion = $_REQUEST['Docs_Acreditacion'];
 
     // #### HACER INSERT A LA BASE DE DATOS #####
-  $Insert = "INSERT INTO $ACREDITACIONES(Id_Acreditacion,No_Lote,Ano_Acreditacion,No_Oficio,Periodo,Fecha_Acreditacion,Matricula_Acreditacion,Idioma,Nivel_Acreditacion) VALUES (null,'','$Ano_Acreditacion','','$Periodo','','$Matricula_Acreditacion','$Idioma','');";
+  $Insert = "INSERT INTO $ACREDITACIONES(Id_Acreditacion,No_Lote,Ano_Acreditacion,No_Oficio,Periodo,Fecha_Acreditacion,Matricula_Acreditacion,Idioma,Nivel_Acreditacion,Docs_Acreditacion) VALUES (null,'','$Ano_Acreditacion','','$Periodo','','$Matricula_Acreditacion','$Idioma','$Nivel_Acreditacion','$Docs_Acreditacion');";
   $query = $mysqli->query($Insert);
-
-  header("Location:../TablasVistas/Ver_Solicitudes_Acreditaciones.php");
+    //Regresar a registrar otro alumno..
+    header("Location:../FormsAlta/Registro_Solicitud_Acreditacion.php");
  ?>

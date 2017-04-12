@@ -19,6 +19,7 @@ $Ver_Acreditaciones= "SELECT Id_Acreditacion,No_Lote,Ano_Acreditacion,No_Oficio,
 $Result_Ver_Acreditaciones = $mysqli->query($Ver_Acreditaciones);
 
 
+
 //Comprobar la conexion a la base de datos
 if ($mysqli->connect_errno) {
     echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -44,10 +45,13 @@ if ($mysqli->connect_errno) {
       <div class="col-sm-offset-1">
         <a href="../TablasVistas/Acreditaciones.php" class="btn btn-danger col-sm-1 "><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
       </div>
-      <!-- ########   boton AGREGAR Solicitudes_Acreditaciones ######### -->
-      <div class="col-sm-offset-2">
-          <a href="../FormsAlta/Alta_Solicitud_Acreditacion.php" class="btn btn-success col-sm-3"><i class="fa fa-plus-square" aria-hidden="true"></i> Nueva Solicitud</a>
-      </div>
+      <!-- ##### BUSCADOR POR FECHA y HORA #####-->
+          <div class="col-sm-offset-2">
+            <form class="form-inline" method="post" action="../TablasVistas/Busqueda_Solicitudes_Acreditaciones.php">
+              <input class="form-control" type="number"  name="Matricula_Alumno" placeholder="Matricula Alumno">
+              <button class="btn btn-outline-success " type="submit">Buscar</button>
+            </form>
+          </div>
     </div>
     <div class="container">
       <table class="table table-hover">

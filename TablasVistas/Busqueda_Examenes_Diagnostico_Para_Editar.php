@@ -23,6 +23,7 @@
   $ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM $ALUMNOS INNER JOIN $EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD WHERE Fecha_ExamenD = '".$Fecha_ExamenD."';";
   $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 
+
  ?>
 
  <html>
@@ -60,10 +61,12 @@
            </thead>
            <tbody>
            <!-- CODIGO PHP - ########## CICLO PARA MOSTRAR LOS REGISTROS DE LOS EXAMENES_DIAGNOSTICO ########-->
-             <?php while ( $renglon = mysqli_fetch_array($Result_Ver_Examenes_D)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
+             <?php
+              $numero = 1;
+             while ( $renglon = mysqli_fetch_array($Result_Ver_Examenes_D)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
                  <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
                    <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                       <td class="text-center"><?php echo $renglon['Id_ExamenD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                       <td class="text-center"><?php echo $numero++?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                        <td class="text-center"><?php echo $renglon['Fecha_ExamenD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                        <td class="text-center"><?php echo $renglon['Matricula_AlumnoD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                        <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->

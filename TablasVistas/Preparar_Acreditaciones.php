@@ -53,7 +53,8 @@ if ($mysqli->connect_errno) {
            <tr>
              <th class="text-center">N0.Lote</th>
              <th class="text-center">Fecha Acreditación</th>
-             <th></th>
+             <th class="text-center">Ver</th>
+             <th class="text-center">Excel</th>
            </tr>
          </thead>
          <tbody>
@@ -66,7 +67,8 @@ if ($mysqli->connect_errno) {
              <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                  <td class="text-center"><?php echo $renglon['No_Lote']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                  <td class="text-center"><?php echo $renglon['Fecha_Acreditacion']?></td>
-                 <td><a class="btn btn-default" role ="button" href="../TablasVistas/Ver_Cada_Lote.php?Fecha_Acreditacion=<?php echo $renglon['Fecha_Acreditacion'];?>"> <i class="fa fa-eye fa-2x" aria-hidden="true"></i> </a></td> <!-- Boton Editar estilo bootsrap primary azul-->
+                 <td class="text-center"><a class="btn btn-default" role ="button" href="../TablasVistas/Ver_Cada_Lote.php?Fecha_Acreditacion=<?php echo $renglon['Fecha_Acreditacion'];?>"> <i class="fa fa-eye fa-2x" aria-hidden="true"></i> </a></td>
+                 <td class="text-center"><a class="btn btn-success" role ="button" href="../ReportesExcel/Acreditaciones_Por_Lote.php?Fecha_Acreditacion=<?php echo $renglon['Fecha_Acreditacion'];?>"> <i class="fa fa-download fa-2x" aria-hidden="true"></i> </a></td>
                </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
              <?php
                  }

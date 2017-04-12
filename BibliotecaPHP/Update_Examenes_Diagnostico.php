@@ -13,13 +13,14 @@
     } else {
 
         //Recibir los valores del Formulario Editar..Alumnos
-        $Id_ExamenD = $_REQUEST['Id_ExamenD'];
+           $Id_ExamenD = $_REQUEST['Id_ExamenD'];
            $Fecha_ExamenD = $_REQUEST['Fecha_ExamenD'];
            $Matricula_AlumnoD = $_REQUEST['Matricula_AlumnoD'];
            $Nivel_ExamenD = $_REQUEST['Nivel_ExamenD'];
+           $No_Recibo_ED = $_REQUEST['No_Recibo_ED'];
 
         //Hacer el Query Update a la base de datos .. tabla Alumnos.
-        $UpdateExamenD = "UPDATE $EXAMENES_DIAGNOSTICO SET Fecha_ExamenD ='".$Fecha_ExamenD."', Matricula_AlumnoD = '".$Matricula_AlumnoD."', Nivel_ExamenD = '".$Nivel_ExamenD."' WHERE Id_ExamenD = '".$Id_ExamenD."' ";
+          $UpdateExamenD = "UPDATE $EXAMENES_DIAGNOSTICO SET Fecha_ExamenD ='".$Fecha_ExamenD."', Matricula_AlumnoD = '".$Matricula_AlumnoD."', Nivel_ExamenD = '".$Nivel_ExamenD."', No_Recibo_ED='".$No_Recibo_ED."' WHERE Id_ExamenD = '".$Id_ExamenD."' ";
            $Query = $mysqli->query($UpdateExamenD);
 
            header("Location:../TablasVistas/Examenes_diagnostico.php");

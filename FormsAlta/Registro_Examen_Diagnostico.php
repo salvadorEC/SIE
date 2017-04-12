@@ -10,7 +10,7 @@
       <h1>Alta Examen Diagnostico <small>Dar de alta examenes diagnostico en la base de datos</small></h1>
     </div>
     <section class="jumbotron">
-      <!---  ######## FORMULARIO PARA COMENZAR EL REGISTRO DE LOS EXAMANES DIAGNOSTICO ####### --->
+      <!---  ######## FORMULARIO PARA COMENZAR EL REGISTRO DE LOS EXAMANES DIAGNOSTICO PARA COMPROBAR LA MATRICULA INGRESADA ####### --->
       <form class="form-horizontal" action="../BibliotecaPHP/Comprobar_Alta_Examen_Diagnostico.php" method="post">
         <div class="form-group">
           <label class="control-label col-sm-2">Matricula</label> <!-- Version 1.0.1 ... mostrar con AJAX el Nombre del alumno para verificar que es el y tambien para verificar que se encuentra en la base de datos-->

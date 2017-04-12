@@ -16,7 +16,6 @@
         echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
 
-// Version 1.0.1 ... Comprobar si el alumno ya esta registrado .. validar con matricula. para despues mostrar "Alumno Ya Registrado";
 
   //Recibir datos...
   $Matricula_Alumno = $_REQUEST['Matricula_Alumno'];
