@@ -19,11 +19,11 @@
     </div>
     <section class="jumbotron">
       <!---  ######## FORMULARIO PARA COMENZAR EL REGISTRO DE LA SOLICITUD DE ACREDITACION PARA COMPROBAR LA MAT.. ####### --->
-      <form class="form-horizontal" action="../BibliotecaPHP/Comprobar_Alta_Solicitud_Acreditaciones.php" method="post">
+      <form class="form-horizontal" action="../BibliotecaPHP/Comprobar_Matricula_A_Soliciud_Acreditacion.php" method="post">
         <div class="form-group">
           <label class="control-label col-sm-2">Matricula</label> <!-- Version 1.0.1 ... mostrar con AJAX el Nombre del alumno para verificar que es el y tambien para verificar que se encuentra en la base de datos-->
           <div class="col-sm-8">
-            <input class="form-control" type="number" name="Matricula_De_Comprobacion" placeholder="Ingresar Matricula Del Alumno">
+            <input class="form-control" type="number" name="Matricula_De_Comprobacion" placeholder="Ingresar Matricula Del Alumno" required="required" maxlength="8">
           </div>
         </div>
         <!-- ####### BOTON COMENZAR REGISTRO #####-->

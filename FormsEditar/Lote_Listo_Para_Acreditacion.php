@@ -47,12 +47,84 @@ if ($mysqli->connect_errno) {
           <!--#### No_Lote #### -->
           <label class="control-label col-sm-2">No. Lote</label>
             <div class="col-sm-2">
-              <input class="form-control" type="text" name="No_Lote" placeholder="No.Lote">
+              <select class="form-control" type="text" name="No_Lote">
+                <option>LOTE 1</option>
+                <option>LOTE 2</option>
+                <option>LOTE 3</option>
+                <option>LOTE 4</option>
+                <option>LOTE 5</option>
+                <option>LOTE 6</option>
+                <option>LOTE 7</option>
+                <option>LOTE 8</option>
+                <option>LOTE 9</option>
+                <option>LOTE 10</option>
+                <option>LOTE 11</option>
+                <option>LOTE 12</option>
+                <option>LOTE 13</option>
+                <option>LOTE 14</option>
+                <option>LOTE 15</option>
+                <option>LOTE 16</option>
+                <option>LOTE 17</option>
+                <option>LOTE 18</option>
+                <option>LOTE 19</option>
+                <option>LOTE 20</option>
+                <option>LOTE 21</option>
+                <option>LOTE 22</option>
+                <option>LOTE 23</option>
+                <option>LOTE 24</option>
+                <option>LOTE 25</option>
+                <option>LOTE 26</option>
+                <option>LOTE 27</option>
+                <option>LOTE 28</option>
+                <option>LOTE 29</option>
+                <option>LOTE 30</option>
+                <option>LOTE 31</option>
+                <option>LOTE 32</option>
+                <option>LOTE 33</option>
+                <option>LOTE 34</option>
+                <option>LOTE 35</option>
+                <option>LOTE 36</option>
+                <option>LOTE 37</option>
+                <option>LOTE 38</option>
+                <option>LOTE 39</option>
+                <option>LOTE 40</option>
+                <option>LOTE 41</option>
+                <option>LOTE 42</option>
+                <option>LOTE 43</option>
+                <option>LOTE 44</option>
+                <option>LOTE 45</option>
+                <option>LOTE 46</option>
+                <option>LOTE 47</option>
+                <option>LOTE 48</option>
+                <option>LOTE 49</option>
+                <option>LOTE 50</option>
+                <option>LOTE 51</option>
+                <option>LOTE 52</option>
+                <option>LOTE 53</option>
+                <option>LOTE 54</option>
+                <option>LOTE 55</option>
+                <option>LOTE 56</option>
+                <option>LOTE 57</option>
+                <option>LOTE 58</option>
+                <option>LOTE 59</option>
+                <option>LOTE 60</option>
+                <option>LOTE 61</option>
+                <option>LOTE 62</option>
+                <option>LOTE 63</option>
+                <option>LOTE 64</option>
+                <option>LOTE 65</option>
+                <option>LOTE 66</option>
+                <option>LOTE 67</option>
+                <option>LOTE 68</option>
+                <option>LOTE 69</option>
+                <option>LOTE 70</option>
+              </select>
+
             </div>
              <!--####### No_Oficio ####### -->
           <label class="control-label col-sm-2">No. Oficio </label>
             <div class="col-sm-2">
-              <input class="form-control" type="number" name="No_Oficio" placeholder="Numero De Oficio">
+              <input class="form-control" type="number" name="No_Oficio" placeholder="Numero De Oficio" required="required">
            </div>
            <!--####### Periodo ####### -->
           <label class="control-label col-sm-2">Periodo </label>
@@ -67,7 +139,7 @@ if ($mysqli->connect_errno) {
          <div class="form-group">
            <label class="control-label col-sm-2">Fecha De Acreditación </label>
            <div class="col-sm-10">
-             <input class="form-control" type="date" name="Fecha_Acreditacion">
+             <input class="form-control" type="date" name="Fecha_Acreditacion" required="required">
            </div>
          </div>
          <!--####### Matricula_Acreditacion ####### -->

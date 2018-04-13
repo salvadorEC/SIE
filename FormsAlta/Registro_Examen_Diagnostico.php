@@ -11,11 +11,11 @@
     </div>
     <section class="jumbotron">
       <!---  ######## FORMULARIO PARA COMENZAR EL REGISTRO DE LOS EXAMANES DIAGNOSTICO PARA COMPROBAR LA MATRICULA INGRESADA ####### --->
-      <form class="form-horizontal" action="../BibliotecaPHP/Comprobar_Alta_Examen_Diagnostico.php" method="post">
+      <form class="form-horizontal" action="../BibliotecaPHP/Comprobar_Matricula_A_Examenes_Diagnostico.php" method="post">
         <div class="form-group">
-          <label class="control-label col-sm-2">Matricula</label> <!-- Version 1.0.1 ... mostrar con AJAX el Nombre del alumno para verificar que es el y tambien para verificar que se encuentra en la base de datos-->
+          <label class="control-label col-sm-2">Matricula</label>
           <div class="col-sm-8">
-            <input class="form-control" type="number" name="Matricula_De_Comprobacion" placeholder="Ingresar Matricula Del Alumno">
+            <input class="form-control" type="number" name="Matricula_De_Comprobacion" placeholder="Ingresar Matricula Del Alumno" required="required">
           </div>
         </div>
         <!-- ####### BOTON COMENZAR REGISTRO #####-->

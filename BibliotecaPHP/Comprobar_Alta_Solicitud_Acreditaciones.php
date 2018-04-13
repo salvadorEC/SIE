@@ -12,7 +12,7 @@
     }
 
     //RECIBIR MATRICULA INGRESADA
-    $Matricula_De_Comprobacion = $_REQUEST['Matricula_De_Comprobacion'];
+    $Matricula_De_Comprobacion = $_GET['Matricula_De_Comprobacion'];
 
     //Buscar en la base de datos A TODOS LOS ALUMNOS...
     $Ver_Alumnos = "SELECT * FROM $ALUMNOS WHERE Matricula_Alumno = '".$Matricula_De_Comprobacion."'";

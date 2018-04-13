@@ -16,18 +16,18 @@ $Matricula_Alumno = $_REQUEST['Matricula_Alumno'];
 
 //SELECT TABLA ACREDITACIONES MOSTRAR: Acreditaciones WHERE x Fecha_Acreditacion - Nombre Alumno Ordenado alfabeticamente.
 
-$Ver_Acreditaciones= "SELECT Id_Acreditacion,No_Lote,Ano_Acreditacion,No_Oficio,Periodo,Fecha_Acreditacion,Matricula_Acreditacion,Nombre_Alumno,Idioma,Nivel_Acreditacion,Docs_Acreditacion FROM $ACREDITACIONES JOIN $ALUMNOS ON  Matricula_Alumno = Matricula_Acreditacion  WHERE Matricula_Alumno = '$Matricula_Alumno' ";
+$Ver_Acreditaciones= "SELECT Id_Acreditacion,No_Lote,Ano_Acreditacion,No_Oficio,Periodo,Fecha_Acreditacion,Matricula_Acreditacion,Nombre_Alumno,Idioma,Nivel_Acreditacion,Docs_Acreditacion FROM $ACREDITACIONES JOIN $ALUMNOS ON  Matricula_Alumno = Matricula_Acreditacion  WHERE Matricula_Alumno = '$Matricula_Alumno' and Fecha_Acreditacion=''";
 
 $Result_Ver_Acreditaciones = $mysqli->query($Ver_Acreditaciones);
 
 //Guardar en un Array
 $renglon = $Result_Ver_Acreditaciones->fetch_assoc();
 
-
-//Comprobar la conexion a la base de datos
-if ($mysqli->connect_errno) {
-    echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+//Si no encuentra una solicitud regresar al mismo menu
+if ($renglon == "") {
+  header('Location:../TablasVistas/Ver_Solicitudes_Acreditaciones.php');
 }
+
 
  ?>
 
@@ -67,9 +67,9 @@ if ($mysqli->connect_errno) {
             <th class="text-center">Nombre Alumno</th>
             <th class="text-center">Idioma</th>
             <th class="text-center">Nivel A Acreditar</th>
-            <th class="text-center" >Entrego Docs</th>
-            <th class="text-center" >Editar</th>
-            <th></th>
+            <th class="text-center">Entrego Docs</th>
+            <th class="">Editar</th>
+
           </tr>
         </thead>
         <tbody>
@@ -83,7 +83,7 @@ if ($mysqli->connect_errno) {
                 <td class="text-center"><?php echo $renglon['Idioma']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Nivel_Acreditacion']?></td>
                 <td class="text-center"><?php echo $renglon['Docs_Acreditacion']?></td>
-                <td><a class="btn btn-info" href="../FormsEditar/Solicitudes_Acreditaciones.php?Id_Acreditacion=<?php echo $renglon['Id_Acreditacion'];?>" type="button" name="button"><i class="fa fa-plus-circle fa-1x" aria-hidden="true"></i></a></td>
+                <td><a class="btn btn-info " href="../FormsEditar/Solicitudes_Acreditaciones.php?Id_Acreditacion=<?php echo $renglon['Id_Acreditacion'];?>" type="button" name="button"><i class="fa fa-plus-circle fa-1x" aria-hidden="true"></i></a></td>
               </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
           </tbody> <!-- Final Cuerpo de la Tabla de Contabilidad -->
         </tbody>

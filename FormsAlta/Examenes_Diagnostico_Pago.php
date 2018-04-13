@@ -30,19 +30,19 @@
         <div class="form-group">
           <label class="control-label col-sm-2">Fecha y Hora</label>
           <div class="col-sm-8">
-            <input class="form-control"type="datetime-local" name="Fecha_ExamenD">
+            <input class="form-control"type="datetime-local" name="Fecha_ExamenD" required="required">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2">Matricula</label> <!-- Version 1.0.1 ... mostrar con AJAX el Nombre del alumno para verificar que es el y tambien para verificar que se encuentra en la base de datos-->
           <div class="col-sm-8">
-            <input class="form-control" type="number" name="Matricula_AlumnoD" value ="<?php echo $row['Matricula_AlumnoD'] ?>">
+            <input class="form-control" type="number" name="Matricula_AlumnoD" value ="<?php echo $row['Matricula_AlumnoD'] ?>" required="required">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2">Nivel</label>
           <div class="col-sm-8">
-            <select class="form-control" name="Nivel_ExamenD">
+            <select class="form-control" name="Nivel_ExamenD" required="required">
               <option>Solicitud</option>
               <option>Nivel 1</option>
               <option>Nivel 2</option>
@@ -58,7 +58,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2">No. Recibo</label>
           <div class="col-sm-8">
-            <input class="form-control" type="number" name="No_Recibo_ED" placeholder="No. Recibo">
+            <input class="form-control" type="number" name="No_Recibo_ED" placeholder="No. Recibo" required="required">
           </div>
         </div>
         <div class="form-group">

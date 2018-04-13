@@ -50,7 +50,33 @@
            <!--####### Periodo ####### -->
           <label class="control-label col-sm-2">Periodo </label>
             <div class="col-sm-2">
-              <input class="form-control" type="text" name="Periodo" value="2017-1">
+              <select class="form-control" type="text" name="Periodo">
+                <option>/2009-1</option>
+                <option>/2009-2</option>
+                <option>/2010-1</option>
+                <option>/2010-2</option>
+                <option>/2011-1</option>
+                <option>/2011-2</option>
+                <option>/2012-1</option>
+                <option>/2012-2</option>
+                <option>/2013-1</option>
+                <option>/2013-2</option>
+                <option>/2014-1</option>
+                <option>/2014-2</option>
+                <option>/2015-1</option>
+                <option>/2015-2</option>
+                <option>/2016-1</option>
+                <option>/2016-2</option>
+                <option>/2017-1</option>
+                <option>/2017-2</option>
+                <option>/2018-1</option>
+                <option>/2018-2</option>
+                <option>/2019-1</option>
+                <option>/2019-2</option>
+                <option>/2019-2</option>
+                <option>/2020-1</option>
+                <option>/2020-2</option>
+              </select>
             </div>
         </div>
         <br>
@@ -99,7 +125,6 @@
            <label class="control-label col-sm-2"> Nivel </label>
            <div class="col-sm-10">
              <select class="form-control" type="text" name="Nivel_Acreditacion">
-               <option>Nivel 1</option>
                <option>Nivel 2</option>
                <option>Nivel 3</option>
                <option>Nivel 4</option>
@@ -115,8 +140,8 @@
             <label class="control-label col-sm-2"> Entrego Documentos </label>
             <div class="col-sm-10">
               <select class="form-control" type="text" name="Docs_Acreditacion">
-                <option>SI</option>
                 <option>NO</option>
+                <option>SI</option>
               </select>
             </div>
           </div>

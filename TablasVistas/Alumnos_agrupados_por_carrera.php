@@ -8,7 +8,7 @@ $mysqli = new mysqli($SERVIDOR, $USER, $PASS, $BD);
 $acentos = $mysqli->query("SET NAMES 'utf8'");
 
 //VER ALUMNOS DE LA BASE DE DATOS
-$Ver_Alumnos = "SELECT * FROM $ALUMNOS   ";
+$Ver_Alumnos = "SELECT * FROM $ALUMNOS ";
 $Result_Ver_Alumnos = $mysqli->query($Ver_Alumnos);
 
   //Comprobar la conexion a la base de datos
@@ -72,6 +72,7 @@ $Result_Ver_Alumnos = $mysqli->query($Ver_Alumnos);
           <?php
             $numero = 1;
             while ($renglon = mysqli_fetch_array($Result_Ver_Alumnos)){
+
             ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
           <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
           <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->

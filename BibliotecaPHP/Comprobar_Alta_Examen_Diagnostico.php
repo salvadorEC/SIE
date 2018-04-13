@@ -17,7 +17,7 @@ $acentos = $mysqli->query("SET NAMES 'utf8'");
 //############## E X A M E N E S - D I A G N O S T I C O - PAGAR O NO - ################################
 
 // Se recibe el valor del buscador por matricula de la ruta : FormsAlta/Registro_Examen_Diagnostico.php
-$Matricula_De_Comprobacion = $_REQUEST['Matricula_De_Comprobacion'];
+$Matricula_De_Comprobacion = $_GET['Matricula_De_Comprobacion'];
 
 //Buscar en la base de datos A TODOS LOS ALUMNOS...
 $Ver_Alumnos = "SELECT * FROM $ALUMNOS WHERE Matricula_Alumno = '".$Matricula_De_Comprobacion."'";

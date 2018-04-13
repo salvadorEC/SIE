@@ -76,10 +76,10 @@
         <div class="form-group">
           <label class="control-label col-sm-2">No. Recibo</label>
           <div class="col-sm-8">
-            <input class="form-control" type="number" name="No_Recibo_ED" placeholder="No. Recibo">
+            <input class="form-control" type="number" name="No_Recibo_ED" value="<?php echo $row['No_Recibo_ED'] ?>">
           </div>
         </div>
-        
+
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-8"> <!-- Recorrer el boton dos columnas hacia la derecha y ancharlo 6 columnas-->
             <button type="submit" class="btn btn-primary btn-block">Guardar</button>

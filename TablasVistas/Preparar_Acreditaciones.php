@@ -13,7 +13,7 @@ $acentos = $mysqli->query("SET NAMES 'utf8'");
 
 //SELECT TABLA ACREDITACIONES
 
-$Ver_Acreditaciones= "SELECT DISTINCT No_Lote,Fecha_Acreditacion FROM $ACREDITACIONES ORDER BY Fecha_Acreditacion DESC ";
+$Ver_Acreditaciones= "SELECT DISTINCT No_Lote,Fecha_Acreditacion FROM $ACREDITACIONES  WHERE Fecha_Acreditacion IS NOT NULL ORDER BY Fecha_Acreditacion DESC";
 $Result_Ver_Acreditaciones = $mysqli->query($Ver_Acreditaciones);
 
 
@@ -39,7 +39,7 @@ if ($mysqli->connect_errno) {
      <!--####### boton para generar nuevo LOTE de Acreditaciones -->
      <div class="row">
        <div class="col-sm-offset-2 col-sm-6">
-         <a href="../TablasVistas/Generar_Nuevo_Lote_Acreditaciones.php" type="button" class="btn btn-primary btn-block" name="">Generar Nuevo LOTE</a>
+         <a href="../TablasVistas/Generar_Nuevo_Lote_Acreditaciones.php" type="button" class="btn btn-primary btn-block" name="">Generar Nuevo LOTE (Acre. Pendientes)</a>
        </div>
      <!--####### boton Ver Solicitudes Acreditaciones -->
        <div class="col-sm-2">
@@ -53,21 +53,33 @@ if ($mysqli->connect_errno) {
            <tr>
              <th class="text-center">N0.Lote</th>
              <th class="text-center">Fecha Acreditación</th>
-             <th class="text-center">Ver</th>
+             <th class="text-center">Cartas Acreditación</th>
              <th class="text-center">Excel</th>
            </tr>
          </thead>
          <tbody>
            <tbody>
              <?php
+             // Funcion para tratar/convertir fechas..
+               function multiexplode ($delimiters,$string) {
+
+                   $ready = str_replace($delimiters, $delimiters[0], $string);
+                   $launch = explode($delimiters[0], $ready);
+                   return  $launch;
+               }
+
                while ($renglon = mysqli_fetch_array($Result_Ver_Acreditaciones))
                  {
              ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
              <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
              <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                  <td class="text-center"><?php echo $renglon['No_Lote']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                 <td class="text-center"><?php echo $renglon['Fecha_Acreditacion']?></td>
-                 <td class="text-center"><a class="btn btn-default" role ="button" href="../TablasVistas/Ver_Cada_Lote.php?Fecha_Acreditacion=<?php echo $renglon['Fecha_Acreditacion'];?>"> <i class="fa fa-eye fa-2x" aria-hidden="true"></i> </a></td>
+                 <?php
+                 $Fecha_Acreditacion = $renglon['Fecha_Acreditacion'];
+                 $exploded = multiexplode(array("-","T"),$Fecha_Acreditacion);
+                  ?>
+                 <td class="text-center"><?php echo "$exploded[2]/$exploded[1]/$exploded[0]"; ?></td>
+                 <td class="text-center"><a class="btn btn-default" role ="button" href="../TablasVistas/Ver_Cada_Lote.php?Fecha_Acreditacion=<?php echo $renglon['Fecha_Acreditacion'];?>"> <i class="fa fa-bookmark-o fa-2x" aria-hidden="true"></i></i> </a></td>
                  <td class="text-center"><a class="btn btn-success" role ="button" href="../ReportesExcel/Acreditaciones_Por_Lote.php?Fecha_Acreditacion=<?php echo $renglon['Fecha_Acreditacion'];?>"> <i class="fa fa-download fa-2x" aria-hidden="true"></i> </a></td>
                </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
              <?php

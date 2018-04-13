@@ -13,7 +13,7 @@ $acentos = $mysqli->query("SET NAMES 'utf8'");
 
 //SELECT TABLA SOLICITUDES_ACREDITACIONES
 
-$Ver_Solicitudes_Acreditaciones= "SELECT * FROM $ACREDITACIONES INNER JOIN $ALUMNOS ON Matricula_Acreditacion = Matricula_Alumno WHERE Docs_Acreditacion = 'SI' AND Fecha_Acreditacion = '' ";
+$Ver_Solicitudes_Acreditaciones= "SELECT * FROM $ACREDITACIONES INNER JOIN $ALUMNOS ON Matricula_Acreditacion = Matricula_Alumno WHERE Docs_Acreditacion = 'SI' AND Fecha_Acreditacion IS NULL ";
 $Result_Ver_Solicitudes_Acreditaciones = $mysqli->query($Ver_Solicitudes_Acreditaciones);
 
 
@@ -35,7 +35,7 @@ if ($mysqli->connect_errno) {
   <body>
 
     <div class="jumbotron">
-      <h2 class="col-sm-offset-3">GENERAR NUEVO LOTE</h2>
+      <h3 class="col-sm-offset-1">ACREDITACIONES PENDIENTES (ALUMNOS QUE ENTREGARON DOCUMENTOS) </h3>
     </div>
     <!-- ######### BOTON VER LOTES #######-->
     <div class="row">

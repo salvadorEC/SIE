@@ -19,6 +19,13 @@
   if ($mysqli->connect_errno) {
       echo "Fallo al conectar al servidor: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
   }
+  // Funcion para tratar/convertir fechas..
+    function multiexplode ($delimiters,$string) {
+
+        $ready = str_replace($delimiters, $delimiters[0], $string);
+        $launch = explode($delimiters[0], $ready);
+        return  $launch;
+    }
 
   // Recibir el valor de la fecha examen diagnostico del url. de la direccion BibliotecaPHP/Update_Examenes_Diagnostico_Editar_Nivel.php
   $Fecha_ExamenD = $_GET['Fecha_ExamenD'];
@@ -43,7 +50,8 @@
    </header>
    <section>
      <div class="jumbotron">
-       <h2>EDITAR NIVELES LOTE FECHA: <? echo $Fecha_ExamenD?></h2>
+       <?php $exploded = multiexplode(array("-","T"),$Fecha_ExamenD); ?>
+       <h2>EDITAR NIVELES LOTE FECHA: <? echo "$exploded[2]/$exploded[1]/$exploded[0] Hora: $exploded[3]";?></h2>
      </div>
      <!-- ##### BOTON TABLA VISTAS REGRESAR  #####-->
      <div class=" col-sm-2">
@@ -72,7 +80,10 @@
                  <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
                    <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                        <td class="text-center"><?php echo $renglon['Id_ExamenD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                       <td class="text-center"><?php echo $renglon['Fecha_ExamenD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                       <?php
+                       $Fecha_ExamenD = $renglon['Fecha_ExamenD'];
+                       $exploded = multiexplode(array("-","T"),$Fecha_ExamenD); ?>
+                       <td class="text-center"><?php echo "$exploded[2]/$exploded[1]/$exploded[0] Hora: $exploded[3]"; ?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                        <td class="text-center"><?php echo $renglon['Matricula_AlumnoD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                        <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                        <td class="text-center"><?php echo $renglon['Nivel_ExamenD']?></td>

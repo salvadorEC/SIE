@@ -15,7 +15,7 @@
 
     //RECIBIR LOS DATOS DE FormsEditar/Solicitudes_Acreditaciones.php
   $Id_Acreditacion = $_REQUEST['Id_Acreditacion'];
-  $No_Lote = $_REQUEST['No_Lote'];
+  $No_Lote = strtoupper($_REQUEST['No_Lote']);
   $Ano_Acreditacion = $_REQUEST['Ano_Acreditacion'];
   $No_Oficio = $_REQUEST['No_Oficio'];
   $Periodo = $_REQUEST['Periodo'];

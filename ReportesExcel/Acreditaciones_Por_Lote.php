@@ -12,8 +12,58 @@ require('../configuracion.php');
 $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
 $acentos = $mysqli->query("SET NAMES 'utf8'");
 
+// Funcion para tratar/convertir fechas..
+	function multiexplode ($delimiters,$string) {
 
+			$ready = str_replace($delimiters, $delimiters[0], $string);
+			$launch = explode($delimiters[0], $ready);
+			return  $launch;
+	}
+
+// ################# MOSTRAR FECHA LARGA ##########
 $Fecha_Por_Lote = $_GET['Fecha_Acreditacion'];
+
+$Fecha  = $Fecha_Por_Lote;
+$exploded = multiexplode(array("-","T"),$Fecha);
+
+if ($exploded [1]=="01")
+	{
+		$exploded [1]="Enero";
+	}
+	else if ($exploded [1]=="02"){
+		$exploded [1]="Febrero";
+	}
+	else if ($exploded [1]=="03"){
+		$exploded [1]="Marzo";
+	}
+	else if ($exploded [1]=="04"){
+		$exploded [1]="Abril";
+	}
+	else if ($exploded [1]=="05"){
+		$exploded [1]="Mayo";
+	}
+	else if ($exploded [1]=="06"){
+		$exploded [1]="Junio";
+	}
+	else if ($exploded [1]=="07"){
+		$exploded [1]="Julio";
+	}
+	else if ($exploded [1]=="08"){
+		$exploded [1]="Agosto";
+	}
+	else if ($exploded [1]=="09"){
+		$exploded [1]="Septiembre";
+	}
+	else if ($exploded [1]=="10"){
+		$exploded [1]="Octubre";
+	}
+	else if ($exploded [1]=="11"){
+		$exploded [1]="Noviembre";
+	}
+	else if ($exploded [1]=="12"){
+		$exploded [1]="Diciembre";
+	}
+
 
 
 //Hacer consulta a la base de datos para ver cada lote por separado..
@@ -72,8 +122,31 @@ $objPHPExcel->getProperties()->setCreator("Mayra")
                                 $objPHPExcel->getActiveSheet(0)->getStyle('A1:K1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
                           $i = 2;
+
                           while ($renglon = mysqli_fetch_array($Result_Ver_Acreditaciones))
                              {
+
+															 //CAMBIAR FORMATO DE LOS NIVELES..
+															 $level = $renglon['Nivel_Acreditacion'];
+
+												       if ( $level == "Nivel 2" || $level == "NIVEL 2") {
+												         $Nivel = "2do. Nivel";
+												       }
+												       else if ( $level == "Nivel 3" || $level == "NIVEL 3") {
+												           $Nivel = "3er. Nivel";
+												         }
+												         else if ( $level == "Nivel 4" || $level == "NIVEL 4") {
+												           $Nivel = "4to. Nivel";
+												         }
+												        else if ( $level == "Nivel 5" || $level == "NIVEL 5") {
+												           $Nivel = "5to. Nivel";
+												         }
+												         else if ( $level == "Nivel 6" || $level == "NIVEL 6") {
+												           $Nivel = "6to. Nivel";
+												         }
+												         else if ( $level == "Nivel 7" || $level == "NIVEL 7") {
+												           $Nivel = "7mo. Nivel";
+												         }
 
                                $objPHPExcel->setActiveSheetIndex(0)
                                            ->setCellValue("A$i",$renglon['No_Lote'])
@@ -81,14 +154,15 @@ $objPHPExcel->getProperties()->setCreator("Mayra")
                                            ->setCellValue("C$i", $renglon['Semestre_Alumno'])
                                            ->setCellValue("D$i", $renglon['No_Oficio'])
                                            ->setCellValue("E$i", $renglon['Periodo'])
-                                           ->setCellValue("F$i", $renglon['Nombre_Alumno'])
-                                           ->setCellValue("G$i", $renglon['Matricula_Acreditacion'])
-                                           ->setCellValue("H$i", $renglon['Carrera_Alumno'])
-                                           ->setCellValue("I$i", $renglon['Fecha_Acreditacion'])
-                                           ->setCellValue("J$i", $renglon['Idioma'])
-                                           ->setCellValue("K$i", $renglon['Nivel_Acreditacion']);
+                                           ->setCellValue("F$i", mb_strtoupper($renglon['Nombre_Alumno']))
+                                           ->setCellValueExplicit("G$i", $renglon['Matricula_Acreditacion'],PHPExcel_Cell_DataType::TYPE_STRING)
+                                           ->setCellValue("H$i", mb_strtoupper($renglon['Carrera_Alumno']))
+                                           ->setCellValue("I$i", '=CONCATENATE("'.$exploded[2].'"," de ","'.$exploded[1].'"," de ","'.$exploded[0].'")')
+                                           ->setCellValue("J$i", mb_strtoupper($renglon['Idioma']))
+                                           ->setCellValue("K$i", $Nivel);
                                            //Alinear todas las celdas
                                            $objPHPExcel->getActiveSheet(0)->getStyle("A$i:K$i")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+																					 $objPHPExcel->getActiveSheet()->getStyle("G$i")->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_TEXT);
                                            $i++;
                              }
 

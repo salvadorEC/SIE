@@ -23,6 +23,8 @@
     <meta charset="utf-8">
     <title>RESULTADO BUSQUEDA ALUMNO</title>
     <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
     <header class="jumbotron">
@@ -53,9 +55,19 @@
                 <td class="text-center"><?php echo $renglon['Carrera_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Semestre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td><a class="btn btn-success" role ="button" href="../FormsEditar/Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-                <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
+                <td><a onclick="return confirmSubmit()" class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Alumnos.php?Matricula_Alumno=<?php echo $renglon['Matricula_Alumno']; ?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo-->
               </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <?php }?>
+              <script type="text/javascript">
+                    function confirmSubmit()
+                      {
+                        var agree=confirm("Está seguro de eliminar este registro? Este proceso es irreversible.");
+                          if (agree)
+                            return true ;
+                          else
+                            return false ;
+                      }
+             </script>
           </tbody> <!-- Final Cuerpo de la Tabla de Contabilidad -->
         </table>
       </div>

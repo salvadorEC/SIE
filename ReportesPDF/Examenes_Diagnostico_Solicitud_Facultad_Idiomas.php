@@ -200,6 +200,11 @@ while ($renglon = mysqli_fetch_array($Result_Ver_Examenes_D))
                                                   {
                                                        $renglon['Carrera_Alumno'] = "TC";
                                                   }
+                                                  if ($renglon['Semestre_Alumno']== "Egresado")
+                                                  {
+                                                    $renglon['Semestre_Alumno']= "E";
+                                                  }
+
 
  // CONTENIDO DEL PDF COLUMNAS/DATOS.
   $numero++; // Contador ### comenzar de 1 a 20... dependiendo del numero de vueltas que de el array.

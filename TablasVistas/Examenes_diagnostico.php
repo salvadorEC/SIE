@@ -10,7 +10,7 @@ $acentos = $mysqli->query("SET NAMES 'utf8'");
 
 //############## E X A M E N E S - D I A G N O S T I C O ################################
 
-$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM $ALUMNOS INNER JOIN $EXAMENES_DIAGNOSTICO ON Matricula_Alumno = Matricula_AlumnoD;";
+$ver_Examenes_D = "SELECT Id_ExamenD,Fecha_ExamenD,Matricula_AlumnoD,Nombre_Alumno,Nivel_ExamenD,No_Recibo_ED FROM $ALUMNOS INNER JOIN $EXAMENES_DIAGNOSTICO  ON Matricula_Alumno = Matricula_AlumnoD ORDER BY Fecha_ExamenD DESC ;";
 $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
 ?>
 
@@ -39,7 +39,7 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
       <div class="col-sm-offset-6 col-sm-7">
         <form class="form-inline" method="post" action="../TablasVistas/Busqueda_Examenes_Diagnostico_Para_Editar.php">
           <label class="control-label col-sm-4">Agregar Resultados Del Examen Diagnostico -></label>
-          <input class="form-control" type="datetime-local"  name="Fecha_ExamenD">
+          <input class="form-control" type="date"  name="Fecha_ExamenD">
           <button class="btn btn-outline-success " type="submit">Buscar</button>
         </form>
       </div>
@@ -88,18 +88,41 @@ $Result_Ver_Examenes_D = $mysqli->query($ver_Examenes_D);
           <tbody>
           <!-- CODIGO PHP - ########## CICLO PARA MOSTRAR LOS REGISTROS DE LOS EXAMENES_DIAGNOSTICO ########-->
             <?php
+
+            // Funcion para tratar/convertir fechas..
+              function multiexplode ($delimiters,$string) {
+
+                  $ready = str_replace($delimiters, $delimiters[0], $string);
+                  $launch = explode($delimiters[0], $ready);
+                  return  $launch;
+              }
+
               $numero = 1;
               while ( $renglon = mysqli_fetch_array($Result_Ver_Examenes_D)){?> <!-- Ciclo para sacar los datos del array y para crear filas -->
                 <meta charset="utf-8"> <!--Para poder usar todos los caracteres en los registros-->
                   <tr> <!-- INICIO Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                       <td class="text-center"><?php echo $numero++?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
-                      <td class="text-center"><?php echo $renglon['Fecha_ExamenD'];?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
+                      <?php
+                      $Fecha_ExamenD = $renglon['Fecha_ExamenD'];
+                      $exploded = multiexplode(array("-","T"),$Fecha_ExamenD);
+                      ?>
+                      <td class="text-center" width="10%" height="10%"><?php echo "$exploded[2]/$exploded[1]/$exploded[0] Hora: $exploded[3]"; ?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                       <td class="text-center"><?php echo $renglon['Matricula_AlumnoD']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                       <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                       <td class="text-center"><?php echo $renglon['Nivel_ExamenD']?></td>
                       <td class="text-center"><?php echo $renglon['No_Recibo_ED']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                       <td><a class="btn btn-primary" role ="button" href="../FormsEditar/Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-                      <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo--> <!-- Version 1.0.1 Preguntar si se desea Eliminar el registro .. antes de realizar el Query-->
+                      <td><a onclick="return confirmSubmit()" class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo--> <!-- Version 1.0.1 Preguntar si se desea Eliminar el registro .. antes de realizar el Query-->
+                      <script type="text/javascript">
+                            function confirmSubmit()
+                              {
+                                var agree=confirm("Está seguro de eliminar este registro? Este proceso es irreversible.");
+                                  if (agree)
+                                    return true ;
+                                  else
+                                    return false ;
+                              }
+                      </script>
                     </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
               <?php }?>
           </tbody>

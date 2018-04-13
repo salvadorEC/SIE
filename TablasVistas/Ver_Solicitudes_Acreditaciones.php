@@ -14,7 +14,7 @@ $acentos = $mysqli->query("SET NAMES 'utf8'");
 
 //SELECT TABLA ACREDITACIONES MOSTRAR: Acreditaciones WHERE x Fecha_Acreditacion - Nombre Alumno Ordenado alfabeticamente.
 
-$Ver_Acreditaciones= "SELECT Id_Acreditacion,No_Lote,Ano_Acreditacion,No_Oficio,Periodo,Fecha_Acreditacion,Matricula_Acreditacion,Nombre_Alumno,Idioma,Nivel_Acreditacion,Docs_Acreditacion FROM $ACREDITACIONES JOIN $ALUMNOS ON  Matricula_Alumno = Matricula_Acreditacion  WHERE Fecha_Acreditacion = '' ORDER BY Nombre_Alumno ASC  ";
+$Ver_Acreditaciones= "SELECT Id_Acreditacion,No_Lote,Ano_Acreditacion,No_Oficio,Periodo,Fecha_Acreditacion,Matricula_Acreditacion,Nombre_Alumno,Idioma,Nivel_Acreditacion,Docs_Acreditacion FROM $ACREDITACIONES JOIN $ALUMNOS ON  Matricula_Alumno = Matricula_Acreditacion  WHERE Fecha_Acreditacion is null ORDER BY Nombre_Alumno ASC  ";
 
 $Result_Ver_Acreditaciones = $mysqli->query($Ver_Acreditaciones);
 
@@ -64,7 +64,9 @@ if ($mysqli->connect_errno) {
             <th class="text-center">Nombre Alumno</th>
             <th class="text-center">Idioma</th>
             <th class="text-center">Nivel A Acreditar</th>
-            <th class="" colspan="2">Entrego Docs</th>
+            <th class="" colspan="2">Agregar Entrego Docs</th>
+            <th class="">Eliminar</th>
+
           </tr>
         </thead>
         <tbody>
@@ -85,10 +87,21 @@ if ($mysqli->connect_errno) {
                 <td class="text-center"><?php echo $renglon['Nivel_Acreditacion']?></td>
                 <td class="text-center"><?php echo $renglon['Docs_Acreditacion']?></td>
                 <td><a class="btn btn-info" href="../FormsEditar/Solicitudes_Acreditaciones.php?Id_Acreditacion=<?php echo $renglon['Id_Acreditacion'];?>" type="button" name="button"><i class="fa fa-plus-circle fa-1x" aria-hidden="true"></i></a></td>
+                <td><a onclick="return confirmSubmit()" href="../BibliotecaPHP/Eliminar_Solicitudes_Acreditacion.php?Id_Acreditacion=<?php echo $renglon['Id_Acreditacion']; ?>" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
               </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <?php
                 }
             ?>
+            <script type="text/javascript">
+                  function confirmSubmit()
+                    {
+                      var agree=confirm("Está seguro de eliminar este registro? Este proceso es irreversible.");
+                        if (agree)
+                          return true ;
+                        else
+                          return false ;
+                    }
+           </script>
           </tbody> <!-- Final Cuerpo de la Tabla de Contabilidad -->
         </tbody>
       </table>

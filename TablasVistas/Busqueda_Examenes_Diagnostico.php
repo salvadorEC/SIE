@@ -71,9 +71,19 @@
                        <td class="text-center"><?php echo $renglon['Nivel_ExamenD']?></td>
                        <td class="text-center"><?php echo $renglon['No_Recibo_ED']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                        <td><a class="btn btn-primary" role ="button" href="../FormsEditar/Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Editar</a></td> <!-- Boton Editar estilo bootsrap primary azul-->
-                       <td><a class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo--> <!-- Version 1.0.1 Preguntar si se desea Eliminar el registro .. antes de realizar el Query-->
+                       <td><a onclick="return confirmSubmit()" class="btn btn-danger" role="button" href="../BibliotecaPHP/Eliminar_Examenes_Diagnostico.php?Id_ExamenD=<?php echo $renglon['Id_ExamenD'];?>"> Eliminar</a></td> <!-- Boton Eliminar estilo bootsrap Danger rojo--> <!-- Version 1.0.1 Preguntar si se desea Eliminar el registro .. antes de realizar el Query-->
                      </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                <?php }?>
+               <script type="text/javascript">
+                     function confirmSubmit()
+                       {
+                         var agree=confirm("Está seguro de eliminar este registro? Este proceso es irreversible.");
+                           if (agree)
+                             return true ;
+                           else
+                             return false ;
+                       }
+              </script>
            </tbody>
          </table>
        </div>

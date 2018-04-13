@@ -41,7 +41,7 @@ if ($mysqli->connect_errno) {
     <div class="row">
       <div class="col-sm-offset-4">
         <div class="col-sm-5">
-          <a href="" class="btn btn-success btn-lg btn-block"> <i class="fa fa-download" aria-hidden="true"></i> Generar Excel</a>
+          <a href="../ReportesExcel/Relacion_Acreditaciones.php" class="btn btn-success btn-lg btn-block"> <i class="fa fa-download" aria-hidden="true"></i> Generar Excel</a>
         </div>
       </div>
     </div>

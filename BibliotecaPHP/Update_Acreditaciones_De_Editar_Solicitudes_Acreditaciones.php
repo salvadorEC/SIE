@@ -23,7 +23,7 @@
     $Nivel_Acreditacion = $_REQUEST['Nivel_Acreditacion'];
 
     //HACER UPDATE A TABLA ACREDITACIONES
-    $Update_Acreditaciones = "UPDATE $ACREDITACIONES  SET No_Lote='',Ano_Acreditacion='$Ano_Acreditacion',No_Oficio='',Periodo='$Periodo',Fecha_Acreditacion='',Matricula_Acreditacion='$Matricula_Acreditacion',Idioma='$Idioma',Nivel_Acreditacion='$Nivel_Acreditacion',Docs_Acreditacion='$Docs_Acreditacion' WHERE Id_Acreditacion = '".$Id_Acreditacion."'";
+    $Update_Acreditaciones = "UPDATE $ACREDITACIONES  SET No_Lote='',Ano_Acreditacion='$Ano_Acreditacion',No_Oficio='',Periodo='$Periodo',Fecha_Acreditacion=null,Matricula_Acreditacion='$Matricula_Acreditacion',Idioma='$Idioma',Nivel_Acreditacion='$Nivel_Acreditacion',Docs_Acreditacion='$Docs_Acreditacion' WHERE Id_Acreditacion = '".$Id_Acreditacion."'";
       $Query = $mysqli->query($Update_Acreditaciones);
 
       header("Location:../TablasVistas/Ver_Solicitudes_Acreditaciones.php");

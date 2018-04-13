@@ -11,6 +11,16 @@ include "../configuracion.php";
 $mysqli = new mysqli($SERVIDOR,$USER,$PASS,$BD);
 $acentos = $mysqli->query("SET NAMES 'utf8'");
 
+// Funcion para tratar/convertir fechas..
+  function multiexplode ($delimiters,$string) {
+
+      $ready = str_replace($delimiters, $delimiters[0], $string);
+      $launch = explode($delimiters[0], $ready);
+      return  $launch;
+  }
+
+
+
 $Fecha_Por_Lote = $_GET['Fecha_Acreditacion'];
 
 //SELECT TABLA ACREDITACIONES MOSTRAR: Acreditaciones WHERE x Fecha_Acreditacion - Nombre Alumno Ordenado alfabeticamente.
@@ -34,11 +44,14 @@ if ($mysqli->connect_errno) {
     <title>Acreditaciones</title>
     <link rel="stylesheet" href="../includes/css/bootstrap.css"> <!-- Mandar Llamar Bootstrap-->
     <link rel="stylesheet" href="../includes/css/font-awesome.css"> <!-- Mandar Llamar FontAwesome-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
 
     <div class="jumbotron">
-      <h2 class="col-sm-offset-2">ACREDITACIONES DE LA FECHA: <?php echo $Fecha_Por_Lote ?></h2>
+      <?php   $exploded = multiexplode(array("-","T"),$Fecha_Por_Lote); ?>
+      <h2 class="col-sm-offset-2">ACREDITACIONES DE LA FECHA: <?php echo "$exploded[2]/$exploded[1]/$exploded[0]"; ?></h2>
     </div>
     <!-- ### BOTON REGRESAR AL MENU ACREDITACIONES ###-->
     <div class="row">
@@ -47,7 +60,7 @@ if ($mysqli->connect_errno) {
       </div>
       <!-- ### BOTON IMPRIMIR TODOS LOS REGISTROS ###-->
         <div class="col-sm-offset-5">
-          <a href="../ReportesPDF/Lote_Acreditaciones_Completo.php?Fecha_Acreditacion=<?php echo $Fecha_Por_Lote; ?>" class="btn btn-default col-sm-4 "><i class="fa fa-print fa-2x" aria-hidden="true"></i></a>
+          <a href="../ReportesPDF/Lote_Acreditaciones_Completo.php?Fecha_Acreditacion=<?php echo $Fecha_Por_Lote; ?>" target="_blank" class="btn btn-default col-sm-4 "><i class="fa fa-print fa-2x" aria-hidden="true"></i></a>
         </div>
     </div>
 
@@ -64,13 +77,17 @@ if ($mysqli->connect_errno) {
             <th class="text-center">Idioma</th>
             <th class="text-center">Nivel</th>
             <th class="text-center">Fecha Acreditacion</th>
+            <th class="text-center">Eliminar</th>
+            <th></th>
             <th class="text-center">Imprimir</th>
           </tr>
         </thead>
         <tbody>
           <tbody>
             <?php
+
             $numero = 1;
+
               while ($renglon = mysqli_fetch_array($Result_Ver_Acreditaciones))
                 {
             ?> <!-- Ciclo para sacar los datos del array y para crear filas -->
@@ -84,12 +101,29 @@ if ($mysqli->connect_errno) {
                 <td class="text-center"><?php echo $renglon['Nombre_Alumno']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Idioma']?></td> <!-- Campos de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
                 <td class="text-center"><?php echo $renglon['Nivel_Acreditacion']?></td>
-                <td class="text-center"><?php echo $renglon['Fecha_Acreditacion']?></td>
+
+                <?php
+                $Fecha_Acreditacion = $renglon['Fecha_Acreditacion'];
+                $exploded = multiexplode(array("-","T"),$Fecha_Acreditacion);
+                 ?>
+                <td class="text-center"><?php echo "$exploded[2]/$exploded[1]/$exploded[0]"; ?></td>
+                <td><a onclick="return confirmSubmit()" href="../BibliotecaPHP/Eliminar_Acreditacion.php?Id_Acreditacion=<?php echo $renglon['Id_Acreditacion']; ?>&Fecha_Acreditacion=<?php echo $Fecha_Por_Lote; ?>" class="btn btn-danger btn-lg btn-block"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                <td><a href="../FormsEditar/Acreditaciones.php?Id_Acreditacion=<?php echo $renglon['Id_Acreditacion']; ?>" class="btn btn-default btn-lg btn-block"> Editar</a></td>
                 <td><a href="../ReportesPDF/Lote_Acreditaciones.php?Id_Acreditacion=<?php echo $renglon['Id_Acreditacion']; ?>" target="_blank" class="btn btn-default btn-lg btn-block"> <i class="fa fa-print" aria-hidden="true"></i></a></td>
               </tr> <!-- FINAL Fila de la tabla que se crearan dependiendo de la cantidad de registros que existan en el array -->
             <?php
                 }
             ?>
+            <script type="text/javascript">
+                  function confirmSubmit()
+                    {
+                      var agree=confirm("Está seguro de eliminar este registro? Este proceso es irreversible.");
+                        if (agree)
+                          return true ;
+                        else
+                          return false ;
+                    }
+           </script>
           </tbody> <!-- Final Cuerpo de la Tabla de Contabilidad -->
         </tbody>
       </table>
