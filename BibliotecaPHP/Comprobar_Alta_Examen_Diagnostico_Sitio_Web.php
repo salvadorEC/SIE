@@ -42,7 +42,7 @@ if ($row['Matricula_Alumno'] == $Matricula_De_Comprobacion)
         header('Location:../SITIOS WEB - SIE/Paginas_Principales/Solicitar_ExamenD_Alumno.php?mensaje=Pago');
       }
         //Comprobar si el alumno Que no ha hecho antes una solicitud es de Tronco Comun..
-        else if ($row['Carrera_Alumno']!="Tronco Común") // Si  el alumno no es de Tronco Comun que PAGUE!.
+        else if ($row['Carrera_Alumno']!="TRONCO COMÚN") // Si  el alumno no es de Tronco Comun que PAGUE!.
           {
             header('Location:../SITIOS WEB - SIE/Paginas_Principales/Solicitar_ExamenD_Alumno.php?mensaje=Pago');
           }

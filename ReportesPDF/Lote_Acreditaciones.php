@@ -45,7 +45,7 @@
 
         $this->Ln(1); // Salto de linea
         $this->Cell(50); // Movernos a la derecha
-        $this->Cell(0,15,'FACULTAD DE CIENCIAS ADMINISTRATIVAS',0,0,'');
+        $this->Cell(0,10,'FACULTAD DE CIENCIAS ADMINISTRATIVAS',0,0,'');
         $this->Ln(20);
 
         $this->SetFont('Arial','',11);
@@ -228,9 +228,9 @@ while ($row = mysqli_fetch_array($Result_Ver_Acreditaciones))
       // ############ FECHA LARGA DEL FOOTER #######
       $pdf->SetFont('Arial','B',12);
       $pdf->Text(64,195,utf8_decode('Mexicali,  Baja California, '.$exploded [2].' de '.$exploded [1].' de '.$exploded [0]));
-      $pdf->Text(62,202,utf8_decode(('"POR LA REALIZACIÓN PLENA DEL HOMBRE"')));
-      $pdf->Text(96,208,utf8_decode(('DIRECTOR')));
-      $pdf->Text(77,240,utf8_decode(('DR. RAÚL GONZÁLEZ NÚÑEZ')));
+      $pdf->Text(64,202,utf8_decode(('"POR LA REALIZACIÓN PLENA DEL HOMBRE"')));
+      $pdf->Text(100,208,utf8_decode(('DIRECTOR')));
+      $pdf->Text(81,234,utf8_decode(('DR. RAÚL GONZÁLEZ NÚÑEZ')));
 
       $pdf->SetX(24);
 

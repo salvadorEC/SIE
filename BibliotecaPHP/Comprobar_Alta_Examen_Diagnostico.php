@@ -42,7 +42,7 @@ if ($row['Matricula_Alumno'] == $Matricula_De_Comprobacion)
         header('Location:../FormsAlta/Examenes_Diagnostico_Pago.php?Matricula_AlumnoD='.$row2['Matricula_AlumnoD'].'');
       }
         //Comprobar si el alumno Que no ha hecho antes una solicitud es de Tronco Comun..
-        else if ($row['Carrera_Alumno']!="Tronco Común") // Si  el alumno no es de Tronco Comun que PAGUE!.
+        else if ($row['Carrera_Alumno']!="TRONCO COMÚN") // Si  el alumno no es de Tronco Comun que PAGUE!.
           {
             header('Location:../FormsAlta/Alta_Examen_Diagnostico_Pago_No_TC.php?Matricula_Alumno='.$row['Matricula_Alumno'].'');//echo "Este alumno no es de tronco comun"; // Aqui va el link del Form Que Contiene el No de Recibo.
           }

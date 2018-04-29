@@ -157,50 +157,50 @@ $numero = 0; // Contador..
 while ($renglon = mysqli_fetch_array($Result_Ver_Examenes_D))
   {
 
-  if (  $renglon['Carrera_Alumno'] == "Licenciado en Informática" )
+  if (  $renglon['Carrera_Alumno'] == "LICENCIADO EN INFORMÁTICA" )
 
       {
         $renglon['Carrera_Alumno'] = "LI";
       }
 
-        else if ($renglon['Carrera_Alumno'] == "Licenciado en Contaduría")
+        else if ($renglon['Carrera_Alumno'] == "LICENCIADO EN CONTADURÍA")
 
               {
                    $renglon['Carrera_Alumno'] = "LC";
               }
 
-              else if ($renglon['Carrera_Alumno'] == "Licenciado en Administración de Empresas")
+              else if ($renglon['Carrera_Alumno'] == "LICENCIADO EN ADMINISTRACIÓN DE EMPRESAS")
 
                     {
                          $renglon['Carrera_Alumno'] = "LAE";
                     }
 
-                    else if ($renglon['Carrera_Alumno'] == "Licenciado en Mercadotecnia")
+                    else if ($renglon['Carrera_Alumno'] == "LICENCIADO EN MERCADOTECNIA")
 
                           {
                                $renglon['Carrera_Alumno'] = "LM";
                           }
-                          else if ($renglon['Carrera_Alumno'] == "Licenciado en Gestión Turística")
+                          else if ($renglon['Carrera_Alumno'] == "LICENCIADO EN GESTIÓN TURÍSTICA")
 
                                 {
                                      $renglon['Carrera_Alumno'] = "LGT";
                                 }
-                                else if ($renglon['Carrera_Alumno'] == "Licenciado en Negocios Internacionales")
+                                else if ($renglon['Carrera_Alumno'] == "LICENCIADO EN NEGOCIOS INTERNACIONALES")
 
                                       {
                                            $renglon['Carrera_Alumno'] = "LNI";
                                       }
-                                      else if ($renglon['Carrera_Alumno'] == "Licenciado en Negocios Internacionales")
+                                      else if ($renglon['Carrera_Alumno'] == "LICENCIADO EN NEGOCIOS INTERNACIONALES")
 
                                             {
                                                  $renglon['Carrera_Alumno'] = "LNI";
                                             }
-                                            else if ($renglon['Carrera_Alumno'] == "Tronco Común")
+                                            else if ($renglon['Carrera_Alumno'] == "TRONCO COMÚN")
 
                                                   {
                                                        $renglon['Carrera_Alumno'] = "TC";
                                                   }
-                                                  if ($renglon['Semestre_Alumno']== "Egresado")
+                                                  if ($renglon['Semestre_Alumno']== "EGRESADO")
                                                   {
                                                     $renglon['Semestre_Alumno']= "E";
                                                   }

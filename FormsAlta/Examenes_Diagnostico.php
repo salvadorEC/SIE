@@ -51,7 +51,7 @@
               <option>Nivel 4</option>
               <option>Nivel 5</option>
               <option>Nivel 6</option>
-              <option>Nivel 7</option>
+              <option>Nivel 0</option>
             </select>
             <p>Solicitud: Cuando el alumno solicita hacer el examen, el nivel se registra cuando ya llegan los resultados del examen</p>
           </div>
