@@ -90,7 +90,7 @@
       $this->SetY(-15);
         // Arial italic
         $this->SetFont('Arial','B',10);
-        $this->Text(24,268,utf8_decode(('RGN/MGE.')));
+        $this->Text(24,268,utf8_decode(('Vo.Bo/GMR.')));
 
     }
     }
