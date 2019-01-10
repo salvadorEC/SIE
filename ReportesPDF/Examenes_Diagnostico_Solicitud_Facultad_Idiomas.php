@@ -75,7 +75,7 @@ function Header()
     // Movernos a la derecha
     $this->Cell(80);
     // Título Coordinacion Idioma Extranejero
-    $this->Cell(15,5,utf8_decode('Coordinación de Idioma Extranjero'),0,0,'C');
+    $this->Cell(15,5,utf8_decode('Departamento De Idioma Extranjero'),0,0,'C');
     // Salto de línea
     $this->Ln(10);
 
@@ -94,10 +94,10 @@ function Footer()
     $this->Cell(10,10,utf8_decode('_________________________________________'),0,0,'C');
     $this->Ln(10);
     $this->SetX(100);
-    $this->Cell(10,10,utf8_decode('COORDINACIÓN IDIOMA EXTRANJERO'),0,0,'C');
+    $this->Cell(10,10,utf8_decode('RESPONSABLE DE IDIOMA EXTRANJERO FCA'),0,0,'C');
     $this->Ln(5);
     $this->SetX(100);
-    $this->Cell(10,10,utf8_decode('C.P. Mayra Gutiérrez Escoboza '),0,0,'C');
+    $this->Cell(10,10,utf8_decode('DRA. GLORIA MUÑOZ DEL REAL '),0,0,'C');
 
 }
 
